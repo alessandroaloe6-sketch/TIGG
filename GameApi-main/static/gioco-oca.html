@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIGG</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #setup-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .setup-box {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 36px;
+    width: 100%;
+    max-width: 500px;
+    backdrop-filter: blur(10px);
+  }
+
+  .setup-box h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #f5af19, #f12711);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .setup-box h1 span { font-size: 2.4rem; }
+
+  .setup-box p.sub {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+  }
+
+  label { display: block; margin-bottom: 4px; font-size: 0.85rem; color: #ccc; }
+
+  input, select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, select:focus { border-color: #f5af19; }
+
+  .player-inputs { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+
+  .player-row { display: flex; gap: 8px; align-items: center; }
+  .player-row input { margin-bottom: 0; flex: 1; }
+
+  .player-color {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3); cursor: pointer; flex-shrink: 0;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 10px 20px; border: none; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #f5af19, #f12711);
+    color: #fff; width: 100%; padding: 14px; font-size: 1.05rem;
+  }
+
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(245,175,25,0.4); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  .btn-sm {
+    padding: 6px 14px; font-size: 0.8rem;
+    background: rgba(255,255,255,0.1); color: #ccc;
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 6px;
+  }
+
+  .btn-sm:hover { background: rgba(255,255,255,0.2); }
+  .add-player-row { display: flex; gap: 8px; margin-bottom: 14px; }
+
+  #game-screen { display: none; padding: 16px; }
+
+  .game-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 16px; flex-wrap: wrap; gap: 10px;
+  }
+
+  .game-title {
+    font-size: 1.3rem; font-weight: 700;
+    background: linear-gradient(90deg, #f5af19, #f12711);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .game-layout {
+    display: grid; grid-template-columns: 1fr 320px;
+    gap: 16px; max-width: 1200px; margin: 0 auto;
+  }
+
+  @media (max-width: 900px) { .game-layout { grid-template-columns: 1fr; } }
+
+  .board-container {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 20px; position: relative;
+  }
+
+  .board { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+
+  .cell {
+    aspect-ratio: 1; border-radius: 10px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600;
+    position: relative; border: 2px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05); transition: all 0.3s; min-height: 70px;
+  }
+
+  .cell .cell-num { font-size: 0.65rem; color: #999; position: absolute; top: 3px; left: 6px; }
+  .cell .cell-icon { font-size: 1.4rem; }
+  .cell .cell-label { font-size: 0.6rem; color: #bbb; margin-top: 2px; }
+
+  .cell-start { background: rgba(76,175,80,0.2); border-color: #4caf50; }
+  .cell-goose { background: rgba(255,235,59,0.15); border-color: #fdd835; }
+  .cell-bridge { background: rgba(139,69,19,0.25); border-color: #8d6e63; }
+  .cell-well { background: rgba(33,150,243,0.2); border-color: #42a5f5; }
+  .cell-maze { background: rgba(156,39,176,0.2); border-color: #ab47bc; }
+  .cell-prison { background: rgba(96,96,96,0.3); border-color: #757575; }
+  .cell-death { background: rgba(244,67,54,0.25); border-color: #ef5350; }
+  .cell-finish { background: rgba(255,215,0,0.25); border-color: #ffd700; }
+
+  .cell .players-in-cell {
+    display: flex; gap: 3px; position: absolute; bottom: 3px;
+    flex-wrap: wrap; justify-content: center;
+  }
+
+  .player-token {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.5); transition: all 0.4s ease;
+  }
+
+  .sidebar { display: flex; flex-direction: column; gap: 12px; }
+
+  .panel {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 16px;
+  }
+
+  .panel h3 { font-size: 0.9rem; margin-bottom: 10px; color: #f5af19; }
+
+  .current-turn { text-align: center; padding: 16px; font-size: 1rem; }
+  .current-turn .turn-player { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+
+  .dice-area { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+  .dice {
+    width: 80px; height: 80px; background: #fff; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; font-weight: 900; color: #1a1a2e;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.3s; user-select: none;
+  }
+
+  .dice.rolling { animation: diceRoll 0.6s ease; }
+
+  @keyframes diceRoll {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(90deg) scale(1.1); }
+    50% { transform: rotate(180deg) scale(0.9); }
+    75% { transform: rotate(270deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+
+  .btn-roll {
+    background: linear-gradient(135deg, #f5af19, #f12711);
+    color: #fff; padding: 12px 40px; font-size: 1.1rem; font-weight: 700;
+    border: none; border-radius: 10px; cursor: pointer; transition: all 0.2s;
+  }
+
+  .btn-roll:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(245,175,25,0.5); }
+  .btn-roll:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  .scoreboard { display: flex; flex-direction: column; gap: 8px; }
+
+  .score-row {
+    display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+    border-radius: 8px; background: rgba(255,255,255,0.03); transition: background 0.2s;
+  }
+
+  .score-row.active { background: rgba(245,175,25,0.15); }
+
+  .score-dot {
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.4); flex-shrink: 0;
+  }
+
+  .score-name { flex: 1; font-weight: 600; font-size: 0.9rem; }
+  .score-pos { font-size: 0.8rem; color: #aaa; }
+
+  .log-box {
+    max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;
+  }
+
+  .log-entry {
+    font-size: 0.78rem; color: #bbb; padding: 4px 8px;
+    border-radius: 4px; background: rgba(0,0,0,0.2);
+  }
+
+  .log-entry:first-child { color: #fff; background: rgba(245,175,25,0.15); }
+
+  .log-box::-webkit-scrollbar { width: 4px; }
+  .log-box::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+  .winner-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+    z-index: 100; align-items: center; justify-content: center; flex-direction: column; gap: 20px;
+  }
+
+  .winner-overlay.show { display: flex; }
+
+  .winner-text {
+    font-size: 3rem; font-weight: 900;
+    background: linear-gradient(90deg, #ffd700, #f5af19, #f12711);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-align: center; animation: winPulse 1.5s ease infinite;
+  }
+
+  @keyframes winPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+  .winner-sub { font-size: 1.2rem; color: #ccc; }
+
+  .toast {
+    position: fixed; bottom: 20px; left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #333; color: #fff; padding: 12px 24px; border-radius: 10px;
+    font-size: 0.9rem; z-index: 200; transition: transform 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.error { border-color: #ef5350; }
+
+  .status-msg { text-align: center; font-size: 0.85rem; color: #aaa; margin-top: 10px; }
+  .status-msg.ok { color: #4caf50; }
+  .status-msg.err { color: #ef5350; }
+</style>
+</head>
+<body>
+
+<!-- ========== SETUP SCREEN ========== -->
+<div id="setup-screen">
+  <div class="setup-box">
+    <h1><span>&#x1F986;</span> Gioco dell'Oca</h1>
+    <p class="sub">30 caselle &bull; caselle speciali classiche &bull; multiplayer online</p>
+
+    <label>Nome partita</label>
+    <input type="text" id="game-name" placeholder="es. Partita del lunedi" value="Gioco dell'Oca">
+
+    <label>Giocatori</label>
+    <div class="player-inputs" id="player-inputs">
+      <div class="player-row">
+        <input type="text" placeholder="Nome giocatore 1" value="Giocatore 1">
+        <input type="color" class="player-color" value="#e74c3c">
+      </div>
+      <div class="player-row">
+        <input type="text" placeholder="Nome giocatore 2" value="Giocatore 2">
+        <input type="color" class="player-color" value="#3498db">
+      </div>
+    </div>
+    <div class="add-player-row">
+      <button class="btn btn-sm" onclick="addPlayerInput()">+ Aggiungi giocatore</button>
+      <button class="btn btn-sm" onclick="removePlayerInput()">- Rimuovi</button>
+    </div>
+
+    <button class="btn btn-primary" id="btn-start" onclick="startGame()">Inizia Partita</button>
+
+    <div style="margin-top:16px; border-top:1px solid rgba(255,255,255,0.1); padding-top:14px;">
+      <label>Oppure carica partita esistente</label>
+      <input type="text" id="load-game-id" placeholder="Game ID da caricare">
+      <button class="btn btn-sm" style="width:100%;" onclick="loadExistingGame()">Carica partita</button>
+    </div>
+
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+</div>
+
+<!-- ========== GAME SCREEN ========== -->
+<div id="game-screen">
+  <div class="game-header">
+    <div class="game-title">&#x1F986; Gioco dell'Oca</div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button class="btn btn-sm" onclick="copyGameId()">Copia Game ID</button>
+      <button class="btn btn-sm" onclick="shareLink()">Condividi Link</button>
+      <button class="btn btn-sm" onclick="location.reload()">Nuova partita</button>
+    </div>
+  </div>
+
+  <div class="game-layout">
+    <div class="board-container">
+      <div class="board" id="board"></div>
+    </div>
+
+    <div class="sidebar">
+      <div class="panel current-turn">
+        <div class="turn-player" id="turn-player">&mdash;</div>
+        <div class="dice-area">
+          <div class="dice" id="dice">?</div>
+          <button class="btn-roll" id="btn-roll" onclick="rollDice()">Tira il dado</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Classifica</h3>
+        <div class="scoreboard" id="scoreboard"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Log</h3>
+        <div class="log-box" id="log-box"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== WINNER OVERLAY ========== -->
+<div class="winner-overlay" id="winner-overlay">
+  <div class="winner-text" id="winner-text">&#x1F3C6;</div>
+  <div class="winner-sub" id="winner-sub"></div>
+  <button class="btn btn-primary" style="max-width:240px;" onclick="location.reload()">Nuova partita</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════
+const TOTAL_CELLS = 30;
+
+// Auto-detect: l'URL del server e' lo stesso da cui viene servita la pagina
+const API_URL = window.location.origin;
+
+const SPECIAL_CELLS = {
+  5:  { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
+  6:  { type: 'bridge', icon: '\u{1F309}', label: 'Ponte',     action: 'jump', target: 12 },
+  9:  { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
+  14: { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
+  15: { type: 'well',   icon: '\u{1F573}\uFE0F', label: 'Pozzo', action: 'well' },
+  18: { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
+  21: { type: 'maze',   icon: '\u{1F300}', label: 'Labirinto', action: 'jump', target: 15 },
+  23: { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
+  25: { type: 'prison', icon: '\u{1F512}', label: 'Prigione',  action: 'prison', turns: 3 },
+  27: { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
+  28: { type: 'death',  icon: '\u{1F480}', label: 'Morte',     action: 'death' },
+};
+
+const defaultColors = ['#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6','#1abc9c'];
+
+// ═══════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════
+let state = {
+  apiKey: '',
+  gameId: '',
+  players: [],
+  currentIndex: 0,
+  log: [],
+  gameOver: false,
+  winner: null,
+};
+
+// ═══════════════════════════════════════
+// AUTO-REGISTER (nessuna API key richiesta!)
+// ═══════════════════════════════════════
+async function autoRegister() {
+  const randomName = 'oca_player_' + Math.random().toString(36).substring(2, 10);
+  const res = await fetch(API_URL + '/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: randomName }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Registrazione fallita');
+  return data.user.apiKey;
+}
+
+// ═══════════════════════════════════════
+// API HELPER
+// ═══════════════════════════════════════
+async function api(method, path, body) {
+  const opts = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-Key': state.apiKey,
+    },
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(API_URL + path, opts);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Errore API ' + res.status);
+  return data;
+}
+
+// ═══════════════════════════════════════
+// SETUP
+// ═══════════════════════════════════════
+function setStatus(msg, type) {
+  const el = document.getElementById('status-msg');
+  el.textContent = msg;
+  el.className = 'status-msg' + (type === 'ok' ? ' ok' : type === 'err' ? ' err' : '');
+}
+
+function addPlayerInput() {
+  const container = document.getElementById('player-inputs');
+  const idx = container.children.length;
+  if (idx >= 6) return toast('Massimo 6 giocatori');
+  const row = document.createElement('div');
+  row.className = 'player-row';
+  row.innerHTML = '<input type="text" placeholder="Nome giocatore ' + (idx+1) + '" value="Giocatore ' + (idx+1) + '">' +
+    '<input type="color" class="player-color" value="' + defaultColors[idx % defaultColors.length] + '">';
+  container.appendChild(row);
+}
+
+function removePlayerInput() {
+  const container = document.getElementById('player-inputs');
+  if (container.children.length <= 2) return toast('Servono almeno 2 giocatori');
+  container.removeChild(container.lastChild);
+}
+
+async function startGame() {
+  const btn = document.getElementById('btn-start');
+  btn.disabled = true;
+  setStatus('Connessione al server...', '');
+
+  try {
+    // 1. Auto-registra un utente per ottenere la API key
+    state.apiKey = await autoRegister();
+    setStatus('Registrato! Creo la partita...', 'ok');
+
+    const gameName = document.getElementById('game-name').value.trim() || "Gioco dell'Oca";
+    const rows = document.querySelectorAll('#player-inputs .player-row');
+    const playerNames = [];
+    const playerColors = [];
+
+    rows.forEach(function(row) {
+      const name = row.querySelector('input[type=text]').value.trim();
+      const color = row.querySelector('input[type=color]').value;
+      if (name) { playerNames.push(name); playerColors.push(color); }
+    });
+
+    if (playerNames.length < 2) { btn.disabled = false; return toast('Servono almeno 2 giocatori', true); }
+
+    // 2. Crea il gioco via API
+    const gameRes = await api('POST', '/games', { name: gameName });
+    state.gameId = gameRes.game.id;
+
+    // 3. Aggiungi i giocatori via API
+    state.players = [];
+    for (let i = 0; i < playerNames.length; i++) {
+      const pRes = await api('POST', '/games/' + state.gameId + '/players', { name: playerNames[i] });
+      state.players.push({
+        id: pRes.player.id,
+        name: playerNames[i],
+        color: playerColors[i],
+        position: 0,
+        skippedTurns: 0,
+        inWell: false,
+      });
+    }
+
+    state.currentIndex = 0;
+    state.log = [];
+    state.gameOver = false;
+    state.winner = null;
+
+    addLog('Partita iniziata! ' + playerNames.join(' vs '));
+    showGameScreen();
+  } catch (e) {
+    btn.disabled = false;
+    setStatus('Errore: ' + e.message, 'err');
+    toast('Errore: ' + e.message, true);
+  }
+}
+
+async function loadExistingGame() {
+  const gameId = document.getElementById('load-game-id').value.trim();
+  if (!gameId) return toast('Inserisci il Game ID', true);
+
+  setStatus('Connessione...', '');
+
+  try {
+    state.apiKey = await autoRegister();
+
+    const gameRes = await api('GET', '/games/' + gameId);
+    state.gameId = gameId;
+
+    const playersRes = await api('GET', '/games/' + gameId + '/players');
+    const movesRes = await api('GET', '/games/' + gameId + '/moves');
+
+    const stateMoves = movesRes.moves.filter(function(m) { return m.data && m.data.type === 'state'; });
+    const lastState = stateMoves.length > 0 ? stateMoves[stateMoves.length - 1].data : null;
+
+    state.players = playersRes.players.map(function(p, i) {
+      return {
+        id: p.id,
+        name: p.name,
+        color: defaultColors[i % defaultColors.length],
+        position: lastState ? (lastState.positions[p.id] || 0) : 0,
+        skippedTurns: lastState ? (lastState.skippedTurns[p.id] || 0) : 0,
+        inWell: false,
+      };
+    });
+
+    state.currentIndex = lastState ? (lastState.currentPlayerIndex || 0) : 0;
+    state.gameOver = lastState ? (lastState.gameOver || false) : false;
+    state.winner = lastState ? lastState.winner : null;
+    state.log = lastState && lastState.log ? lastState.log.map(function(l) { return l.text; }) : [];
+
+    showGameScreen();
+    toast('Partita caricata!');
+  } catch (e) {
+    setStatus('Errore: ' + e.message, 'err');
+    toast('Errore: ' + e.message, true);
+  }
+}
+
+// ═══════════════════════════════════════
+// RENDERING
+// ═══════════════════════════════════════
+function showGameScreen() {
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('game-screen').style.display = 'block';
+  buildBoard();
+  renderAll();
+}
+
+function buildBoard() {
+  var board = document.getElementById('board');
+  board.innerHTML = '';
+
+  var cols = 6;
+  var rows = Math.ceil((TOTAL_CELLS + 1) / cols);
+  var cellMap = [];
+
+  for (var r = 0; r < rows; r++) {
+    for (var c = 0; c < cols; c++) {
+      var actualC = r % 2 === 1 ? (cols - 1 - c) : c;
+      var cellNum = r * cols + actualC;
+      cellMap.push(cellNum <= TOTAL_CELLS ? cellNum : null);
+    }
+  }
+
+  cellMap.forEach(function(cellNum) {
+    var div = document.createElement('div');
+
+    if (cellNum === null) {
+      div.className = 'cell';
+      div.style.visibility = 'hidden';
+      board.appendChild(div);
+      return;
+    }
+
+    var special = SPECIAL_CELLS[cellNum];
+    var cls = 'cell';
+
+    if (cellNum === 0) cls += ' cell-start';
+    else if (cellNum === TOTAL_CELLS) cls += ' cell-finish';
+    else if (special) cls += ' cell-' + special.type;
+
+    div.className = cls;
+    div.id = 'cell-' + cellNum;
+
+    var inner = '<span class="cell-num">' + cellNum + '</span>';
+
+    if (cellNum === 0) {
+      inner += '<span class="cell-icon">\u{1F3C1}</span><span class="cell-label">Partenza</span>';
+    } else if (cellNum === TOTAL_CELLS) {
+      inner += '<span class="cell-icon">\u{1F3C6}</span><span class="cell-label">Arrivo</span>';
+    } else if (special) {
+      inner += '<span class="cell-icon">' + special.icon + '</span><span class="cell-label">' + special.label + '</span>';
+    } else {
+      inner += '<span class="cell-icon" style="font-size:1rem; color:#555;">' + cellNum + '</span>';
+    }
+
+    inner += '<div class="players-in-cell"></div>';
+    div.innerHTML = inner;
+    board.appendChild(div);
+  });
+}
+
+function renderAll() { renderTokens(); renderScoreboard(); renderLog(); renderTurn(); }
+
+function renderTokens() {
+  document.querySelectorAll('.players-in-cell').forEach(function(el) { el.innerHTML = ''; });
+  state.players.forEach(function(p) {
+    var cell = document.getElementById('cell-' + p.position);
+    if (!cell) return;
+    var container = cell.querySelector('.players-in-cell');
+    var token = document.createElement('div');
+    token.className = 'player-token';
+    token.style.background = p.color;
+    token.title = p.name;
+    container.appendChild(token);
+  });
+}
+
+function renderScoreboard() {
+  var sb = document.getElementById('scoreboard');
+  sb.innerHTML = '';
+  state.players.forEach(function(p, i) {
+    var active = i === state.currentIndex && !state.gameOver;
+    var row = document.createElement('div');
+    row.className = 'score-row' + (active ? ' active' : '');
+    row.innerHTML = '<div class="score-dot" style="background:' + p.color + ';"></div>' +
+      '<div class="score-name">' + p.name + '</div>' +
+      '<div class="score-pos">' + p.position + '/' + TOTAL_CELLS +
+      (p.skippedTurns > 0 ? ' \u23F8\uFE0F' + p.skippedTurns : '') +
+      (p.inWell ? ' \u{1F573}\uFE0F' : '') + '</div>';
+    sb.appendChild(row);
+  });
+}
+
+function renderLog() {
+  var box = document.getElementById('log-box');
+  box.innerHTML = '';
+  var reversed = state.log.slice().reverse();
+  reversed.forEach(function(text) {
+    var entry = document.createElement('div');
+    entry.className = 'log-entry';
+    entry.textContent = text;
+    box.appendChild(entry);
+  });
+}
+
+function renderTurn() {
+  var player = state.players[state.currentIndex];
+  var el = document.getElementById('turn-player');
+  if (state.gameOver) {
+    el.textContent = 'Partita finita!';
+    document.getElementById('btn-roll').disabled = true;
+  } else {
+    el.innerHTML = '<span style="color:' + player.color + ';">' + player.name + '</span>';
+    document.getElementById('btn-roll').disabled = false;
+  }
+}
+
+function addLog(text) { state.log.push(text); renderLog(); }
+
+// ═══════════════════════════════════════
+// GAME LOGIC
+// ═══════════════════════════════════════
+async function rollDice() {
+  if (state.gameOver) return;
+
+  var btn = document.getElementById('btn-roll');
+  btn.disabled = true;
+
+  var player = state.players[state.currentIndex];
+
+  if (player.skippedTurns > 0) {
+    player.skippedTurns--;
+    addLog(player.name + ' salta il turno (' + player.skippedTurns + ' rimanenti)');
+    await saveStateToApi(0, player.name + ' salta il turno');
+    nextTurn();
+    return;
+  }
+
+  if (player.inWell) {
+    addLog(player.name + " e' nel Pozzo! Aspetta che qualcuno lo liberi.");
+    await saveStateToApi(0, player.name + ' bloccato nel Pozzo');
+    nextTurn();
+    return;
+  }
+
+  var diceEl = document.getElementById('dice');
+  diceEl.classList.add('rolling');
+  var roll = Math.floor(Math.random() * 6) + 1;
+
+  await new Promise(function(r) { setTimeout(r, 700); });
+  diceEl.classList.remove('rolling');
+  diceEl.textContent = roll;
+
+  var newPos = player.position + roll;
+  var actionText = '';
+
+  if (newPos > TOTAL_CELLS) {
+    newPos = TOTAL_CELLS - (newPos - TOTAL_CELLS);
+    actionText = player.name + ' tira ' + roll + ', rimbalza! Torna a casella ' + newPos;
+  } else {
+    actionText = player.name + ' tira ' + roll + ' \u2192 Casella ' + newPos;
+  }
+
+  addLog(actionText);
+  player.position = newPos;
+  renderTokens();
+
+  await handleSpecialCell(player, roll);
+
+  if (player.position === TOTAL_CELLS) {
+    state.gameOver = true;
+    state.winner = player.name;
+    addLog('\u{1F3C6} ' + player.name + ' HA VINTO!');
+    await saveStateToApi(roll, player.name + ' HA VINTO!');
+    renderAll();
+    showWinner(player);
+    return;
+  }
+
+  await saveStateToApi(roll, actionText);
+  nextTurn();
+}
+
+async function handleSpecialCell(player, roll) {
+  var cell = SPECIAL_CELLS[player.position];
+  if (!cell) return;
+
+  switch (cell.action) {
+    case 'goose':
+      var newPos = player.position + roll;
+      if (newPos > TOTAL_CELLS) newPos = TOTAL_CELLS - (newPos - TOTAL_CELLS);
+      addLog('\u{1F986} OCA! ' + player.name + ' avanza ancora di ' + roll + ' \u2192 Casella ' + newPos);
+      player.position = newPos;
+      renderTokens();
+      await handleSpecialCell(player, roll);
+      break;
+    case 'jump':
+      addLog(cell.icon + ' ' + cell.label + '! ' + player.name + ' va alla casella ' + cell.target);
+      player.position = cell.target;
+      renderTokens();
+      break;
+    case 'well':
+      player.inWell = true;
+      addLog("\u{1F573}\uFE0F POZZO! " + player.name + " e' bloccato finche' qualcuno non lo libera!");
+      state.players.forEach(function(p) {
+        if (p.id !== player.id && p.inWell && p.position === player.position) {
+          p.inWell = false;
+          addLog(p.name + " e' stato liberato dal Pozzo!");
+        }
+      });
+      break;
+    case 'prison':
+      player.skippedTurns = cell.turns;
+      addLog('\u{1F512} PRIGIONE! ' + player.name + ' salta ' + cell.turns + ' turni!');
+      break;
+    case 'death':
+      player.position = 0;
+      addLog('\u{1F480} MORTE! ' + player.name + ' torna alla partenza!');
+      renderTokens();
+      break;
+  }
+}
+
+function nextTurn() {
+  state.players.forEach(function(p) {
+    if (p.inWell) {
+      var others = state.players.filter(function(o) {
+        return o.id !== p.id && o.position === p.position && !o.inWell;
+      });
+      if (others.length > 0) {
+        p.inWell = false;
+        addLog(p.name + " e' stato liberato dal Pozzo da " + others[0].name + '!');
+      }
+    }
+  });
+  state.currentIndex = (state.currentIndex + 1) % state.players.length;
+  renderAll();
+}
+
+async function saveStateToApi(lastRoll, lastAction) {
+  try {
+    var positions = {};
+    var skippedTurns = {};
+    var playerOrder = [];
+
+    state.players.forEach(function(p) {
+      positions[p.id] = p.position;
+      skippedTurns[p.id] = p.skippedTurns;
+      playerOrder.push(p.id);
+    });
+
+    await api('POST', '/games/' + state.gameId + '/moves', {
+      playerId: state.players[state.currentIndex].id,
+      data: {
+        type: 'state',
+        positions: positions,
+        playerOrder: playerOrder,
+        currentPlayerIndex: state.currentIndex,
+        skippedTurns: skippedTurns,
+        lastRoll: lastRoll,
+        lastAction: lastAction,
+        gameOver: state.gameOver,
+        winner: state.winner,
+        log: state.log.slice(-20).map(function(text) { return { text: text }; }),
+        version: state.log.length,
+      }
+    });
+  } catch (e) {
+    console.error('Errore salvataggio move:', e);
+  }
+}
+
+function showWinner(player) {
+  document.getElementById('winner-text').textContent = '\u{1F3C6} ' + player.name + ' ha vinto!';
+  document.getElementById('winner-sub').textContent = "Complimenti! La partita e' terminata.";
+  document.getElementById('winner-overlay').classList.add('show');
+}
+
+function copyGameId() {
+  navigator.clipboard.writeText(state.gameId).then(function() { toast('Game ID copiato: ' + state.gameId); });
+}
+
+function shareLink() {
+  var url = window.location.origin + '/gioco-oca';
+  navigator.clipboard.writeText(url).then(function() { toast('Link copiato! Condividilo con gli amici'); });
+}
+
+function toast(msg, isError) {
+  var el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(function() { el.className = 'toast'; }, 3000);
+}
+</script>
+</body>
+</html>
