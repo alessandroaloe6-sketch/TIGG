@@ -20490,5 +20490,4728 @@
     "status": "active",
     "createdAt": "2026-03-30T12:33:41.660Z",
     "updatedAt": "2026-03-30T12:33:42.150Z"
+  },
+  {
+    "id": "ebca8f76-0b3d-450b-a750-ae573013b418",
+    "name": "Gioco dell'Oca",
+    "ownerId": "a7fcfe54-d688-49ed-8c55-bb4e221240c3",
+    "players": [
+      {
+        "id": "89d5e8e8-cc57-476b-b42d-ad8f26aad00c",
+        "name": "io",
+        "joinedAt": "2026-03-30T12:59:16.236Z"
+      },
+      {
+        "id": "7578993e-f6fb-4b12-bf56-585f3d51b734",
+        "name": "tu",
+        "joinedAt": "2026-03-30T12:59:16.257Z"
+      }
+    ],
+    "moves": [],
+    "status": "active",
+    "createdAt": "2026-03-30T12:59:16.217Z",
+    "updatedAt": "2026-03-30T12:59:16.257Z"
+  },
+  {
+    "id": "c99852ea-6cec-4980-96af-2ec8d7201d46",
+    "name": "Gioco dell'Oca",
+    "ownerId": "e48c478d-df10-4b6a-97f4-27b7d5bff053",
+    "players": [
+      {
+        "id": "8165a4b1-8133-49d4-89d9-95256df0d46d",
+        "name": "Giocatore 1",
+        "joinedAt": "2026-03-30T13:01:08.251Z"
+      },
+      {
+        "id": "e54b1eb1-9a9c-4400-a201-015073645048",
+        "name": "Giocatore 2",
+        "joinedAt": "2026-03-30T13:01:08.380Z"
+      }
+    ],
+    "moves": [],
+    "status": "active",
+    "createdAt": "2026-03-30T13:01:07.909Z",
+    "updatedAt": "2026-03-30T13:01:08.380Z"
+  },
+  {
+    "id": "6a27a216-f6a3-4bcb-be50-9610359c74be",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "name": "Giocatore 1",
+        "joinedAt": "2026-03-30T13:18:33.647Z"
+      },
+      {
+        "id": "c9cd2114-dd69-487c-afcb-873e89217e46",
+        "name": "Giocatore 2",
+        "joinedAt": "2026-03-30T13:18:33.747Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "c7f66661-118e-41a2-880a-8a626673fb7f",
+        "playerId": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 2,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 2",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            }
+          ],
+          "version": 2
+        },
+        "timestamp": "2026-03-30T13:19:27.273Z"
+      },
+      {
+        "id": "a32bfccb-2fe8-40bc-99ac-155a98ccc5ad",
+        "playerId": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 8,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "Giocatore 1 tira 3 → Casella 5",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            }
+          ],
+          "version": 4
+        },
+        "timestamp": "2026-03-30T13:19:40.395Z"
+      },
+      {
+        "id": "8efb8ccd-6c63-416f-9075-62ca30ed954d",
+        "playerId": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 10,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 1,
+          "lastAction": "Giocatore 1 tira 1 → Casella 9",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            }
+          ],
+          "version": 6
+        },
+        "timestamp": "2026-03-30T13:19:43.858Z"
+      },
+      {
+        "id": "cee20263-2263-4393-8f68-5bda0baea1f8",
+        "playerId": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 12,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 12",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            }
+          ],
+          "version": 7
+        },
+        "timestamp": "2026-03-30T13:19:46.909Z"
+      },
+      {
+        "id": "c3b54deb-5e2f-442e-bf75-1b08290ad2dc",
+        "playerId": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 24,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "Giocatore 1 tira 6 → Casella 18",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 24"
+            }
+          ],
+          "version": 9
+        },
+        "timestamp": "2026-03-30T13:19:48.074Z"
+      },
+      {
+        "id": "20158c08-1ea9-4d15-a6e6-90acb5248583",
+        "playerId": "c9cd2114-dd69-487c-afcb-873e89217e46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 24,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 2
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 1,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 2 tira 2 → Casella 2",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "Giocatore 2 tira 2 → Casella 2"
+            }
+          ],
+          "version": 10
+        },
+        "timestamp": "2026-03-30T13:19:48.887Z"
+      },
+      {
+        "id": "6f263a9d-740c-430e-bbfc-e174907123e3",
+        "playerId": "c9cd2114-dd69-487c-afcb-873e89217e46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 26,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 2
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 1,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 26",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "Giocatore 2 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 26"
+            }
+          ],
+          "version": 11
+        },
+        "timestamp": "2026-03-30T13:19:49.750Z"
+      },
+      {
+        "id": "e3f66909-65f7-4703-92eb-6552c6a87e1e",
+        "playerId": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 26,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 8
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "Giocatore 2 tira 3 → Casella 5",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "Giocatore 2 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 26"
+            },
+            {
+              "text": "Giocatore 2 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 2 avanza ancora di 3 → Casella 8"
+            }
+          ],
+          "version": 13
+        },
+        "timestamp": "2026-03-30T13:19:49.989Z"
+      },
+      {
+        "id": "227ed99b-a12b-431b-a17d-60ca09e0e2b4",
+        "playerId": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 2
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 28",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "Giocatore 2 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 26"
+            },
+            {
+              "text": "Giocatore 2 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 2 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            }
+          ],
+          "version": 15
+        },
+        "timestamp": "2026-03-30T13:19:50.683Z"
+      },
+      {
+        "id": "bb14faba-0aef-4757-a75e-f896082db5f4",
+        "playerId": "c9cd2114-dd69-487c-afcb-873e89217e46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 1,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 2
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 1,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 1,
+          "lastAction": "Giocatore 1 tira 1 → Casella 1",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "Giocatore 2 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 26"
+            },
+            {
+              "text": "Giocatore 2 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 2 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            }
+          ],
+          "version": 16
+        },
+        "timestamp": "2026-03-30T13:19:50.779Z"
+      },
+      {
+        "id": "11464b89-6df8-4298-9f1e-e075dcfc9386",
+        "playerId": "c9cd2114-dd69-487c-afcb-873e89217e46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 3,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 2
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 1,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 3",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "Giocatore 2 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 26"
+            },
+            {
+              "text": "Giocatore 2 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 2 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 3"
+            }
+          ],
+          "version": 17
+        },
+        "timestamp": "2026-03-30T13:19:51.674Z"
+      },
+      {
+        "id": "c36ba896-9585-494e-aff0-607d10f5eada",
+        "playerId": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 3,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 7
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "Giocatore 2 tira 5 → Casella 7",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "Giocatore 2 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 26"
+            },
+            {
+              "text": "Giocatore 2 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 2 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 3"
+            },
+            {
+              "text": "Giocatore 2 tira 5 → Casella 7"
+            }
+          ],
+          "version": 18
+        },
+        "timestamp": "2026-03-30T13:19:51.891Z"
+      },
+      {
+        "id": "68495ce4-9a42-41b7-8357-405f05c9d19b",
+        "playerId": "bd7946ef-1670-4ce9-8128-99d732f91896",
+        "data": {
+          "type": "state",
+          "positions": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 8,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 7
+          },
+          "playerOrder": [
+            "bd7946ef-1670-4ce9-8128-99d732f91896",
+            "c9cd2114-dd69-487c-afcb-873e89217e46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "bd7946ef-1670-4ce9-8128-99d732f91896": 0,
+            "c9cd2114-dd69-487c-afcb-873e89217e46": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "Giocatore 1 tira 5 → Casella 8",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 9"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "Giocatore 2 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 26"
+            },
+            {
+              "text": "Giocatore 2 tira 3 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 2 avanza ancora di 3 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 3"
+            },
+            {
+              "text": "Giocatore 2 tira 5 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 8"
+            }
+          ],
+          "version": 19
+        },
+        "timestamp": "2026-03-30T13:19:52.823Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T13:18:33.574Z",
+    "updatedAt": "2026-03-30T13:19:52.823Z"
+  },
+  {
+    "id": "c01747cb-79c2-42d2-8360-b95c23fcb39d",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "4acd150f-dc87-47ba-815e-2d6226ff879a",
+        "name": "Giocatore 1",
+        "joinedAt": "2026-03-30T13:28:28.387Z"
+      },
+      {
+        "id": "3df96e3b-5cc5-418e-bcb6-adbe14a3d602",
+        "name": "Giocatore 2",
+        "joinedAt": "2026-03-30T13:28:28.491Z"
+      }
+    ],
+    "moves": [],
+    "status": "active",
+    "createdAt": "2026-03-30T13:28:28.278Z",
+    "updatedAt": "2026-03-30T13:28:28.491Z"
+  },
+  {
+    "id": "db501051-62e3-4067-ade4-bdcb2faa536b",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "name": "Giocatore 1",
+        "joinedAt": "2026-03-30T13:30:04.690Z"
+      },
+      {
+        "id": "e8697a50-4321-4f4e-a001-f6ac6c502bef",
+        "name": "Giocatore 2",
+        "joinedAt": "2026-03-30T13:30:04.790Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "1751bb24-94fa-481a-85df-4098054d8d63",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 1,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 1,
+          "lastAction": "Giocatore 1 tira 1 → Casella 1",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            }
+          ],
+          "version": 2
+        },
+        "timestamp": "2026-03-30T13:31:18.917Z"
+      },
+      {
+        "id": "1b6d8c0c-0577-4a48-a329-303ea7847690",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 7,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "Giocatore 1 tira 6 → Casella 7",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            }
+          ],
+          "version": 3
+        },
+        "timestamp": "2026-03-30T13:31:26.181Z"
+      },
+      {
+        "id": "5c0b87e1-e795-4d2e-b2b3-10445e89cd46",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 10,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "Giocatore 1 tira 3 → Casella 10",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            }
+          ],
+          "version": 4
+        },
+        "timestamp": "2026-03-30T13:31:28.324Z"
+      },
+      {
+        "id": "f9d383e1-03b5-41e0-8aff-b452f8016066",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 11,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 1,
+          "lastAction": "Giocatore 1 tira 1 → Casella 11",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            }
+          ],
+          "version": 5
+        },
+        "timestamp": "2026-03-30T13:31:29.787Z"
+      },
+      {
+        "id": "699de7bf-5238-40ba-8abc-ee3b6a617270",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 17,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "Giocatore 1 tira 6 → Casella 17",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            }
+          ],
+          "version": 6
+        },
+        "timestamp": "2026-03-30T13:31:33.181Z"
+      },
+      {
+        "id": "6ead640f-fe29-4231-9c8c-c87751b1b995",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 22,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "Giocatore 1 tira 5 → Casella 22",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            }
+          ],
+          "version": 7
+        },
+        "timestamp": "2026-03-30T13:31:37.102Z"
+      },
+      {
+        "id": "46092a2f-54fa-4566-8bb3-b4927bc0676d",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 24,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 1,
+          "lastAction": "Giocatore 1 tira 1 → Casella 23",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 23"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 24"
+            }
+          ],
+          "version": 9
+        },
+        "timestamp": "2026-03-30T13:35:41.431Z"
+      },
+      {
+        "id": "07a91ca3-6e12-4654-a1d6-13a26c3582b3",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 4,
+          "lastAction": "Giocatore 1 tira 4 → Casella 28",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 23"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 24"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            }
+          ],
+          "version": 11
+        },
+        "timestamp": "2026-03-30T13:35:44.084Z"
+      },
+      {
+        "id": "223059a8-ef7c-46c7-a150-d7a7e7a8d9d0",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 10,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "Giocatore 1 tira 5 → Casella 5",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 23"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 24"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            }
+          ],
+          "version": 13
+        },
+        "timestamp": "2026-03-30T13:35:45.517Z"
+      },
+      {
+        "id": "11787e5a-9e79-473f-9c0c-d22b47286107",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 16,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "Giocatore 1 tira 6 → Casella 16",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 23"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 24"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 16"
+            }
+          ],
+          "version": 14
+        },
+        "timestamp": "2026-03-30T13:35:47.530Z"
+      },
+      {
+        "id": "910851c1-9e26-46c2-beac-0e8192d1f8c2",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 20,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 4,
+          "lastAction": "Giocatore 1 tira 4 → Casella 20",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 23"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 24"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 16"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 20"
+            }
+          ],
+          "version": 15
+        },
+        "timestamp": "2026-03-30T13:35:50.076Z"
+      },
+      {
+        "id": "29f3e634-72a8-4d5a-9692-d1dca7e6bf20",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 22,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 0,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 22",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 23"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 24"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 16"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 22"
+            }
+          ],
+          "version": 16
+        },
+        "timestamp": "2026-03-30T13:35:51.511Z"
+      },
+      {
+        "id": "50f241a0-3bee-4b03-8013-1d2e2baaf4d3",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 25,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 3,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "Giocatore 1 tira 3 → Casella 25",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 23"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 24"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 16"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 25"
+            },
+            {
+              "text": "🔒 PRIGIONE! Giocatore 1 salta 3 turni!"
+            }
+          ],
+          "version": 18
+        },
+        "timestamp": "2026-03-30T13:35:52.432Z"
+      },
+      {
+        "id": "fa496c6b-edff-4df2-8fe3-f7c408b62a82",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 25,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 2,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 salta il turno",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 23"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 24"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 16"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 25"
+            },
+            {
+              "text": "🔒 PRIGIONE! Giocatore 1 salta 3 turni!"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (2 rimanenti)"
+            }
+          ],
+          "version": 19
+        },
+        "timestamp": "2026-03-30T13:35:52.754Z"
+      },
+      {
+        "id": "0634b240-4ab5-4793-99a1-b0f53a3fc626",
+        "playerId": "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 25,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "playerOrder": [
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb",
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d539e7f7-afa9-46c6-a634-2c165bea50fb": 1,
+            "e8697a50-4321-4f4e-a001-f6ac6c502bef": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 salta il turno",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 7"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 11"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 17"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 23"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 1 → Casella 24"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! Giocatore 1 torna alla partenza!"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 16"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 22"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 25"
+            },
+            {
+              "text": "🔒 PRIGIONE! Giocatore 1 salta 3 turni!"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (2 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (1 rimanenti)"
+            }
+          ],
+          "version": 20
+        },
+        "timestamp": "2026-03-30T13:35:54.689Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T13:30:04.357Z",
+    "updatedAt": "2026-03-30T13:35:54.689Z"
+  },
+  {
+    "id": "50142b3c-ff16-4307-92a7-540a90bf28dc",
+    "name": "Test Game",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [],
+    "moves": [],
+    "status": "active",
+    "createdAt": "2026-03-30T13:41:36.082Z",
+    "updatedAt": "2026-03-30T13:41:36.082Z"
+  },
+  {
+    "id": "c0687ec5-4aea-482f-938b-3088a2dfc1af",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "0c13351a-51de-4153-a164-079659c62e7d",
+        "name": "Giocatore 1",
+        "joinedAt": "2026-03-30T13:45:19.373Z"
+      },
+      {
+        "id": "14a43301-1100-4e41-bd2c-fbe2a4aff579",
+        "name": "Giocatore 2",
+        "joinedAt": "2026-03-30T13:45:19.719Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "544cee5e-4ffc-44d2-bbe3-2b56cf098af3",
+        "playerId": "0c13351a-51de-4153-a164-079659c62e7d",
+        "data": {
+          "type": "state",
+          "positions": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 1,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "playerOrder": [
+            "0c13351a-51de-4153-a164-079659c62e7d",
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 0,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "lastRoll": 1,
+          "lastAction": "Giocatore 1 tira 1 → Casella 1",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            }
+          ],
+          "version": 2
+        },
+        "timestamp": "2026-03-30T13:46:04.889Z"
+      },
+      {
+        "id": "05ceff58-84c7-49fa-b56c-5e8352dcb11b",
+        "playerId": "0c13351a-51de-4153-a164-079659c62e7d",
+        "data": {
+          "type": "state",
+          "positions": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 4,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "playerOrder": [
+            "0c13351a-51de-4153-a164-079659c62e7d",
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 0,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "Giocatore 1 tira 3 → Casella 4",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 4"
+            }
+          ],
+          "version": 3
+        },
+        "timestamp": "2026-03-30T13:46:07.314Z"
+      },
+      {
+        "id": "76ea0553-2263-43a1-a1dd-889bdf3b7795",
+        "playerId": "0c13351a-51de-4153-a164-079659c62e7d",
+        "data": {
+          "type": "state",
+          "positions": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 12,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "playerOrder": [
+            "0c13351a-51de-4153-a164-079659c62e7d",
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 0,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 6",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 4"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! Giocatore 1 va alla casella 12"
+            }
+          ],
+          "version": 5
+        },
+        "timestamp": "2026-03-30T13:46:11.985Z"
+      },
+      {
+        "id": "6ca839e3-ca4a-4319-ae40-0ecfe42937a0",
+        "playerId": "0c13351a-51de-4153-a164-079659c62e7d",
+        "data": {
+          "type": "state",
+          "positions": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 16,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "playerOrder": [
+            "0c13351a-51de-4153-a164-079659c62e7d",
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 0,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 14",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 4"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! Giocatore 1 va alla casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 2 → Casella 16"
+            }
+          ],
+          "version": 7
+        },
+        "timestamp": "2026-03-30T13:46:13.547Z"
+      },
+      {
+        "id": "6455381a-e989-4bc7-93f0-589987e8d140",
+        "playerId": "0c13351a-51de-4153-a164-079659c62e7d",
+        "data": {
+          "type": "state",
+          "positions": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 15,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "playerOrder": [
+            "0c13351a-51de-4153-a164-079659c62e7d",
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 0,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "Giocatore 1 tira 5 → Casella 21",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 4"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! Giocatore 1 va alla casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 2 → Casella 16"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 21"
+            },
+            {
+              "text": "🌀 Labirinto! Giocatore 1 va alla casella 15"
+            }
+          ],
+          "version": 9
+        },
+        "timestamp": "2026-03-30T13:46:49.656Z"
+      },
+      {
+        "id": "8d42f001-6d50-479e-8fe1-95b88a614e4d",
+        "playerId": "0c13351a-51de-4153-a164-079659c62e7d",
+        "data": {
+          "type": "state",
+          "positions": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 17,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "playerOrder": [
+            "0c13351a-51de-4153-a164-079659c62e7d",
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "0c13351a-51de-4153-a164-079659c62e7d": 0,
+            "14a43301-1100-4e41-bd2c-fbe2a4aff579": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 17",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 4"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! Giocatore 1 va alla casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 2 → Casella 16"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 21"
+            },
+            {
+              "text": "🌀 Labirinto! Giocatore 1 va alla casella 15"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 17"
+            }
+          ],
+          "version": 10
+        },
+        "timestamp": "2026-03-30T13:46:54.586Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T13:45:19.269Z",
+    "updatedAt": "2026-03-30T13:46:54.586Z"
+  },
+  {
+    "id": "531088b4-b584-4f51-a5ae-660b058c32e0",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "f2a17360-9a3e-4447-a253-9d5266774a0c",
+        "name": "Giocatore 1",
+        "joinedAt": "2026-03-30T13:47:45.376Z"
+      },
+      {
+        "id": "8279a634-1f49-4446-a412-a2eb286c7cd8",
+        "name": "Giocatore 2",
+        "joinedAt": "2026-03-30T13:47:45.480Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "b16c7af0-961e-4120-b6ae-01555a45f24d",
+        "playerId": "f2a17360-9a3e-4447-a253-9d5266774a0c",
+        "data": {
+          "type": "state",
+          "positions": {
+            "f2a17360-9a3e-4447-a253-9d5266774a0c": 10,
+            "8279a634-1f49-4446-a412-a2eb286c7cd8": 0
+          },
+          "playerOrder": [
+            "f2a17360-9a3e-4447-a253-9d5266774a0c",
+            "8279a634-1f49-4446-a412-a2eb286c7cd8"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "f2a17360-9a3e-4447-a253-9d5266774a0c": 0,
+            "8279a634-1f49-4446-a412-a2eb286c7cd8": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "Giocatore 1 tira 5 → Casella 5",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            }
+          ],
+          "version": 3
+        },
+        "timestamp": "2026-03-30T13:47:49.802Z"
+      },
+      {
+        "id": "c03a54a3-7954-47c3-adfb-5b1f969b8612",
+        "playerId": "f2a17360-9a3e-4447-a253-9d5266774a0c",
+        "data": {
+          "type": "state",
+          "positions": {
+            "f2a17360-9a3e-4447-a253-9d5266774a0c": 22,
+            "8279a634-1f49-4446-a412-a2eb286c7cd8": 0
+          },
+          "playerOrder": [
+            "f2a17360-9a3e-4447-a253-9d5266774a0c",
+            "8279a634-1f49-4446-a412-a2eb286c7cd8"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "f2a17360-9a3e-4447-a253-9d5266774a0c": 0,
+            "8279a634-1f49-4446-a412-a2eb286c7cd8": 0
+          },
+          "lastRoll": 4,
+          "lastAction": "Giocatore 1 tira 4 → Casella 14",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita iniziata! Giocatore 1 vs Giocatore 2"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 4 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 4 → Casella 22"
+            }
+          ],
+          "version": 6
+        },
+        "timestamp": "2026-03-30T13:47:52.910Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T13:47:45.252Z",
+    "updatedAt": "2026-03-30T13:47:52.910Z"
+  },
+  {
+    "id": "8ea7ae27-4cb9-4b3a-8afc-17202fd6e9de",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "61265354-caa1-41ab-ba02-cdd76e7b9e0f",
+        "name": "Giocatore 1",
+        "joinedAt": "2026-03-30T13:53:10.814Z"
+      },
+      {
+        "id": "2ab8fd50-f03f-4326-95a5-ae1093d6b263",
+        "name": "Giocatore 2",
+        "joinedAt": "2026-03-30T13:53:10.900Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "45d13fca-144f-4450-be19-f68e1d595f0d",
+        "playerId": "61265354-caa1-41ab-ba02-cdd76e7b9e0f",
+        "data": {
+          "type": "state",
+          "positions": {
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f": 1,
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263": 0
+          },
+          "playerOrder": [
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f",
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f": 0,
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263": 0
+          },
+          "lastRoll": 1,
+          "lastAction": "Giocatore 1 tira 1 → Casella 1",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            }
+          ],
+          "version": 1
+        },
+        "timestamp": "2026-03-30T13:53:59.070Z"
+      },
+      {
+        "id": "2dc0c886-1eb5-4fa0-8608-1f51416452b1",
+        "playerId": "61265354-caa1-41ab-ba02-cdd76e7b9e0f",
+        "data": {
+          "type": "state",
+          "positions": {
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f": 4,
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263": 0
+          },
+          "playerOrder": [
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f",
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f": 0,
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "Giocatore 1 tira 3 → Casella 4",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 4"
+            }
+          ],
+          "version": 2
+        },
+        "timestamp": "2026-03-30T13:54:01.595Z"
+      },
+      {
+        "id": "eda0238b-9c9b-49ff-982c-9ba5afd81c77",
+        "playerId": "61265354-caa1-41ab-ba02-cdd76e7b9e0f",
+        "data": {
+          "type": "state",
+          "positions": {
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f": 8,
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263": 0
+          },
+          "playerOrder": [
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f",
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f": 0,
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263": 0
+          },
+          "lastRoll": 4,
+          "lastAction": "Giocatore 1 tira 4 → Casella 8",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 4"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 8"
+            }
+          ],
+          "version": 3
+        },
+        "timestamp": "2026-03-30T13:54:03.216Z"
+      },
+      {
+        "id": "ae8486be-fa09-48c4-989c-02b7bcef7737",
+        "playerId": "61265354-caa1-41ab-ba02-cdd76e7b9e0f",
+        "data": {
+          "type": "state",
+          "positions": {
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f": 11,
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263": 0
+          },
+          "playerOrder": [
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f",
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "61265354-caa1-41ab-ba02-cdd76e7b9e0f": 0,
+            "2ab8fd50-f03f-4326-95a5-ae1093d6b263": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "Giocatore 1 tira 3 → Casella 11",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Giocatore 1 tira 1 → Casella 1"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 4"
+            },
+            {
+              "text": "Giocatore 1 tira 4 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 11"
+            }
+          ],
+          "version": 4
+        },
+        "timestamp": "2026-03-30T13:54:08.775Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T13:53:10.706Z",
+    "updatedAt": "2026-03-30T13:54:08.775Z"
+  },
+  {
+    "id": "66ce24e8-498d-4cf1-b320-bc6b0ddeeccb",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "name": "Giocatore 1",
+        "joinedAt": "2026-03-30T13:56:11.980Z"
+      },
+      {
+        "id": "0134fe59-40db-4da7-8a41-1995fc4fb0e6",
+        "name": "Giocatore 2",
+        "joinedAt": "2026-03-30T13:57:11.723Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "4015a844-bb9f-4083-8ef8-894b334c038a",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 10
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "Giocatore 1 tira 5 → Casella 5",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            }
+          ],
+          "version": 3
+        },
+        "timestamp": "2026-03-30T13:57:17.685Z"
+      },
+      {
+        "id": "db33b7cc-ac7a-4a47-8475-499dec9f2d9a",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 12
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 12",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            }
+          ],
+          "version": 4
+        },
+        "timestamp": "2026-03-30T13:57:25.244Z"
+      },
+      {
+        "id": "75462c1c-057a-48e4-989b-4a18136125b7",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "Giocatore 1 tira 3 → Casella 15",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            }
+          ],
+          "version": 6
+        },
+        "timestamp": "2026-03-30T13:57:28.099Z"
+      },
+      {
+        "id": "ed8aa32c-561b-43d4-a15e-7b9a84516443",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 7
+        },
+        "timestamp": "2026-03-30T13:57:30.349Z"
+      },
+      {
+        "id": "ad09cf59-cea4-4654-b25a-f783182f31ad",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 8
+        },
+        "timestamp": "2026-03-30T13:57:30.914Z"
+      },
+      {
+        "id": "0c8fe499-4f5a-494a-9251-26b972b8dc49",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 9
+        },
+        "timestamp": "2026-03-30T13:57:31.804Z"
+      },
+      {
+        "id": "b0ee25b3-2756-46fa-ad1e-dbfe0d7ff238",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 10
+        },
+        "timestamp": "2026-03-30T13:57:32.094Z"
+      },
+      {
+        "id": "8ce0cf31-81c9-4751-8833-7cf59951ccbb",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 11
+        },
+        "timestamp": "2026-03-30T13:57:32.282Z"
+      },
+      {
+        "id": "468a0597-6872-484b-b3b6-ff35170eaf92",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 12
+        },
+        "timestamp": "2026-03-30T13:57:32.549Z"
+      },
+      {
+        "id": "485a55bf-e633-472b-a6e9-3751304f5622",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 13
+        },
+        "timestamp": "2026-03-30T13:57:32.687Z"
+      },
+      {
+        "id": "8426108c-200a-4c11-8669-f687b1394e0f",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 14
+        },
+        "timestamp": "2026-03-30T13:57:32.903Z"
+      },
+      {
+        "id": "81d78f50-5a5e-4804-a6fe-2cad14865e23",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 15
+        },
+        "timestamp": "2026-03-30T13:57:33.095Z"
+      },
+      {
+        "id": "d7b14665-8838-46b3-9234-4db609aa2613",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 16
+        },
+        "timestamp": "2026-03-30T13:57:33.478Z"
+      },
+      {
+        "id": "f41e1863-8521-4f96-9ed0-8907044eb55a",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 17
+        },
+        "timestamp": "2026-03-30T13:57:33.674Z"
+      },
+      {
+        "id": "ab3b686c-7080-4f1b-9477-14f3afd4c7c3",
+        "playerId": "9ad4d748-1e6f-450f-9fef-4d552286db48",
+        "data": {
+          "type": "state",
+          "positions": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 15
+          },
+          "playerOrder": [
+            "9ad4d748-1e6f-450f-9fef-4d552286db48"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "9ad4d748-1e6f-450f-9fef-4d552286db48": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 bloccato nel Pozzo",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 5"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 5 → Casella 10"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 12"
+            },
+            {
+              "text": "Giocatore 1 tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! Giocatore 1 e' bloccato finche' qualcuno non lo libera!"
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            },
+            {
+              "text": "Giocatore 1 e' nel Pozzo! Aspetta che qualcuno lo liberi."
+            }
+          ],
+          "version": 18
+        },
+        "timestamp": "2026-03-30T13:57:34.048Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T13:56:11.813Z",
+    "updatedAt": "2026-03-30T13:57:34.048Z"
+  },
+  {
+    "id": "9a79f914-af03-4fa7-b45a-fabdcd369c55",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "479112d3-fe56-421d-85e2-37770169c27d",
+        "name": "bonjour",
+        "joinedAt": "2026-03-30T13:59:54.611Z"
+      }
+    ],
+    "moves": [],
+    "status": "active",
+    "createdAt": "2026-03-30T13:59:54.272Z",
+    "updatedAt": "2026-03-30T13:59:54.611Z"
+  },
+  {
+    "id": "06e95072-cbcf-4b90-8ced-063354a2b1ef",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "08fa11f3-6d70-4292-b3d9-074c0138b0df",
+        "name": "xicor",
+        "joinedAt": "2026-03-30T14:01:10.200Z"
+      },
+      {
+        "id": "28ee818b-db75-4f0e-93a7-2ce5fbfdb059",
+        "name": "Giocatore 2",
+        "joinedAt": "2026-03-30T14:01:38.321Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "24a504ef-027c-4110-b276-0630d52ffb8a",
+        "playerId": "08fa11f3-6d70-4292-b3d9-074c0138b0df",
+        "data": {
+          "type": "state",
+          "positions": {
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df": 12
+          },
+          "playerOrder": [
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "xicor tira 6 → Casella 6",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "xicor tira 6 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! xicor va alla casella 12"
+            }
+          ],
+          "version": 3
+        },
+        "timestamp": "2026-03-30T14:01:49.452Z"
+      },
+      {
+        "id": "e671c389-5264-4597-84e4-7c02843fc3b5",
+        "playerId": "08fa11f3-6d70-4292-b3d9-074c0138b0df",
+        "data": {
+          "type": "state",
+          "positions": {
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df": 24
+          },
+          "playerOrder": [
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "xicor tira 6 → Casella 18",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "xicor tira 6 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! xicor va alla casella 12"
+            },
+            {
+              "text": "xicor tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! xicor avanza ancora di 6 → Casella 24"
+            }
+          ],
+          "version": 5
+        },
+        "timestamp": "2026-03-30T14:01:55.984Z"
+      },
+      {
+        "id": "7a1ddd3e-5834-44c0-926c-ca90c44cc300",
+        "playerId": "08fa11f3-6d70-4292-b3d9-074c0138b0df",
+        "data": {
+          "type": "state",
+          "positions": {
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df": 26
+          },
+          "playerOrder": [
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "xicor tira 2 → Casella 26",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "xicor tira 6 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! xicor va alla casella 12"
+            },
+            {
+              "text": "xicor tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! xicor avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "xicor tira 2 → Casella 26"
+            }
+          ],
+          "version": 6
+        },
+        "timestamp": "2026-03-30T14:01:58.193Z"
+      },
+      {
+        "id": "165cda6c-262e-48ee-8c0c-59cda1364e31",
+        "playerId": "08fa11f3-6d70-4292-b3d9-074c0138b0df",
+        "data": {
+          "type": "state",
+          "positions": {
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df": 29
+          },
+          "playerOrder": [
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "08fa11f3-6d70-4292-b3d9-074c0138b0df": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "xicor tira 5, rimbalza! Torna a casella 29",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "xicor tira 6 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! xicor va alla casella 12"
+            },
+            {
+              "text": "xicor tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! xicor avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "xicor tira 2 → Casella 26"
+            },
+            {
+              "text": "xicor tira 5, rimbalza! Torna a casella 29"
+            }
+          ],
+          "version": 7
+        },
+        "timestamp": "2026-03-30T14:01:59.447Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T14:01:10.088Z",
+    "updatedAt": "2026-03-30T14:01:59.447Z"
+  },
+  {
+    "id": "b34f646f-4e15-4a65-b9fc-c2169435d761",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "17686dd1-53f1-43d6-b4ba-8e15d9382527",
+        "name": "aaz",
+        "joinedAt": "2026-03-30T14:05:59.454Z"
+      },
+      {
+        "id": "39fd04a1-6d1f-443c-8166-ffa0770f514b",
+        "name": "weegee",
+        "joinedAt": "2026-03-30T14:06:33.390Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "664ade3c-098f-44cd-a294-68245dd4362f",
+        "playerId": "17686dd1-53f1-43d6-b4ba-8e15d9382527",
+        "data": {
+          "type": "state",
+          "positions": {
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527": 0,
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b": 0
+          },
+          "playerOrder": [
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527",
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527": 0,
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Si è unito weegee",
+          "gameOver": false,
+          "winner": null,
+          "log": [],
+          "version": 0
+        },
+        "timestamp": "2026-03-30T14:06:33.567Z"
+      },
+      {
+        "id": "7097188d-5e18-454a-a3dc-7f24c9866683",
+        "playerId": "17686dd1-53f1-43d6-b4ba-8e15d9382527",
+        "data": {
+          "type": "state",
+          "positions": {
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527": 12,
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b": 0
+          },
+          "playerOrder": [
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527",
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527": 0,
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "aaz tira 6 → Casella 6",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "aaz tira 6 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! aaz va alla casella 12"
+            }
+          ],
+          "version": 3
+        },
+        "timestamp": "2026-03-30T14:06:42.672Z"
+      },
+      {
+        "id": "5a783564-9d1c-4929-adf9-48b93068b37e",
+        "playerId": "17686dd1-53f1-43d6-b4ba-8e15d9382527",
+        "data": {
+          "type": "state",
+          "positions": {
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527": 24,
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b": 0
+          },
+          "playerOrder": [
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527",
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527": 0,
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "aaz tira 6 → Casella 18",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "aaz tira 6 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! aaz va alla casella 12"
+            },
+            {
+              "text": "aaz tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! aaz avanza ancora di 6 → Casella 24"
+            }
+          ],
+          "version": 5
+        },
+        "timestamp": "2026-03-30T14:06:49.556Z"
+      },
+      {
+        "id": "6e5153be-fd26-4fc7-b26e-8a291494736d",
+        "playerId": "17686dd1-53f1-43d6-b4ba-8e15d9382527",
+        "data": {
+          "type": "state",
+          "positions": {
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527": 30,
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b": 0
+          },
+          "playerOrder": [
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527",
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "17686dd1-53f1-43d6-b4ba-8e15d9382527": 0,
+            "39fd04a1-6d1f-443c-8166-ffa0770f514b": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "aaz HA VINTO!",
+          "gameOver": true,
+          "winner": "aaz",
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "aaz tira 6 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! aaz va alla casella 12"
+            },
+            {
+              "text": "aaz tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! aaz avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "aaz tira 6 → Casella 30"
+            },
+            {
+              "text": "🏆 aaz HA VINTO!"
+            }
+          ],
+          "version": 7
+        },
+        "timestamp": "2026-03-30T14:06:51.073Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T14:05:59.375Z",
+    "updatedAt": "2026-03-30T14:06:51.073Z"
+  },
+  {
+    "id": "a7e2ec0f-84be-4167-8bf1-e0c09f022bae",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "name": "Giocatore 1",
+        "joinedAt": "2026-03-30T14:09:01.103Z"
+      },
+      {
+        "id": "0a3fe9f3-0426-4669-b0e7-712ac22b4f04",
+        "name": "weegee",
+        "joinedAt": "2026-03-30T14:09:31.109Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "7d0e6dd2-cb34-4b05-a060-077b5587a366",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 0,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 0,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Si è unito weegee",
+          "gameOver": false,
+          "winner": null,
+          "log": [],
+          "version": 0
+        },
+        "timestamp": "2026-03-30T14:09:31.217Z"
+      },
+      {
+        "id": "97e3fa18-2e80-4f1c-88ce-ce345f206a7c",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 2,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 0,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 2",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            }
+          ],
+          "version": 2
+        },
+        "timestamp": "2026-03-30T14:09:37.747Z"
+      },
+      {
+        "id": "0b1869d9-6eac-458b-a34a-7a742f28b816",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 8,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 0,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "Giocatore 1 tira 6 → Casella 8",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 8"
+            }
+          ],
+          "version": 3
+        },
+        "timestamp": "2026-03-30T14:09:44.474Z"
+      },
+      {
+        "id": "0a7fb48b-ad00-4d89-a4cf-53c164e10e47",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 20,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 0,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "Giocatore 1 tira 6 → Casella 14",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 20"
+            }
+          ],
+          "version": 5
+        },
+        "timestamp": "2026-03-30T14:09:45.529Z"
+      },
+      {
+        "id": "46b88b4e-1606-4212-834e-1aba2647d8b9",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 25,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 3,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "Giocatore 1 tira 5 → Casella 25",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 25"
+            },
+            {
+              "text": "🔒 PRIGIONE! Giocatore 1 salta 3 turni!"
+            }
+          ],
+          "version": 7
+        },
+        "timestamp": "2026-03-30T14:09:46.660Z"
+      },
+      {
+        "id": "cf6a4807-85f8-46ad-b61f-5c033e8d8144",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 25,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 2,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 salta il turno",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 25"
+            },
+            {
+              "text": "🔒 PRIGIONE! Giocatore 1 salta 3 turni!"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (2 rimanenti)"
+            }
+          ],
+          "version": 8
+        },
+        "timestamp": "2026-03-30T14:09:47.234Z"
+      },
+      {
+        "id": "00070f74-b0ac-47b1-9956-9e5fd60d960c",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 25,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 1,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 salta il turno",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 25"
+            },
+            {
+              "text": "🔒 PRIGIONE! Giocatore 1 salta 3 turni!"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (2 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (1 rimanenti)"
+            }
+          ],
+          "version": 9
+        },
+        "timestamp": "2026-03-30T14:09:47.501Z"
+      },
+      {
+        "id": "d20f275e-c6b5-49eb-99c5-ae2b709a4fa7",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 25,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 0,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Giocatore 1 salta il turno",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 25"
+            },
+            {
+              "text": "🔒 PRIGIONE! Giocatore 1 salta 3 turni!"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (2 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (1 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (0 rimanenti)"
+            }
+          ],
+          "version": 10
+        },
+        "timestamp": "2026-03-30T14:09:48.337Z"
+      },
+      {
+        "id": "cbaa39d2-f7e1-4e56-a567-04d55163a371",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 29,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 0,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "Giocatore 1 tira 2 → Casella 27",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 25"
+            },
+            {
+              "text": "🔒 PRIGIONE! Giocatore 1 salta 3 turni!"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (2 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (1 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (0 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 27"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 2 → Casella 29"
+            }
+          ],
+          "version": 12
+        },
+        "timestamp": "2026-03-30T14:09:50.163Z"
+      },
+      {
+        "id": "ec8f10a2-8fd6-4218-9d7f-0985960db51d",
+        "playerId": "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 30,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "playerOrder": [
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0",
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "d7b56242-327a-4ad9-bdb6-f0be80e821f0": 0,
+            "0a3fe9f3-0426-4669-b0e7-712ac22b4f04": 0
+          },
+          "lastRoll": 1,
+          "lastAction": "Giocatore 1 HA VINTO!",
+          "gameOver": true,
+          "winner": "Giocatore 1",
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 2"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 8"
+            },
+            {
+              "text": "Giocatore 1 tira 6 → Casella 14"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 6 → Casella 20"
+            },
+            {
+              "text": "Giocatore 1 tira 5 → Casella 25"
+            },
+            {
+              "text": "🔒 PRIGIONE! Giocatore 1 salta 3 turni!"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (2 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (1 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 salta il turno (0 rimanenti)"
+            },
+            {
+              "text": "Giocatore 1 tira 2 → Casella 27"
+            },
+            {
+              "text": "🦆 OCA! Giocatore 1 avanza ancora di 2 → Casella 29"
+            },
+            {
+              "text": "Giocatore 1 tira 1 → Casella 30"
+            },
+            {
+              "text": "🏆 Giocatore 1 HA VINTO!"
+            }
+          ],
+          "version": 14
+        },
+        "timestamp": "2026-03-30T14:09:51.688Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T14:09:00.819Z",
+    "updatedAt": "2026-03-30T14:09:51.688Z"
+  },
+  {
+    "id": "d73fc24a-a366-48fa-997c-9103eecf71ed",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "04e2937d-c9c7-4ba5-941c-34260d37f5d0",
+        "name": "j",
+        "joinedAt": "2026-03-30T14:12:06.145Z"
+      },
+      {
+        "id": "fbc9d280-6230-4126-88d8-c3296d365218",
+        "name": "weegee",
+        "joinedAt": "2026-03-30T14:12:39.005Z"
+      },
+      {
+        "id": "7e931c76-86f8-4f79-b9a3-5e2db575476d",
+        "name": "jj",
+        "joinedAt": "2026-03-30T14:13:21.037Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "ae108b46-0152-47d4-835b-9b8299e0c569",
+        "playerId": "04e2937d-c9c7-4ba5-941c-34260d37f5d0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "04e2937d-c9c7-4ba5-941c-34260d37f5d0": 4
+          },
+          "playerOrder": [
+            "04e2937d-c9c7-4ba5-941c-34260d37f5d0"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "04e2937d-c9c7-4ba5-941c-34260d37f5d0": 0
+          },
+          "lastRoll": 4,
+          "lastAction": "j tira 4 → Casella 4",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "j tira 4 → Casella 4"
+            }
+          ],
+          "version": 2
+        },
+        "timestamp": "2026-03-30T14:12:47.367Z"
+      },
+      {
+        "id": "9ed23d35-8759-43f4-9e35-dd7bd65b9951",
+        "playerId": "04e2937d-c9c7-4ba5-941c-34260d37f5d0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "04e2937d-c9c7-4ba5-941c-34260d37f5d0": 12,
+            "fbc9d280-6230-4126-88d8-c3296d365218": 0,
+            "7e931c76-86f8-4f79-b9a3-5e2db575476d": 0
+          },
+          "playerOrder": [
+            "04e2937d-c9c7-4ba5-941c-34260d37f5d0",
+            "fbc9d280-6230-4126-88d8-c3296d365218",
+            "7e931c76-86f8-4f79-b9a3-5e2db575476d"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "04e2937d-c9c7-4ba5-941c-34260d37f5d0": 0,
+            "fbc9d280-6230-4126-88d8-c3296d365218": 0,
+            "7e931c76-86f8-4f79-b9a3-5e2db575476d": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "j tira 2 → Casella 6",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "j tira 4 → Casella 4"
+            },
+            {
+              "text": "j tira 2 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! j va alla casella 12"
+            }
+          ],
+          "version": 4
+        },
+        "timestamp": "2026-03-30T14:13:25.738Z"
+      },
+      {
+        "id": "13d46e3b-26be-420e-a8c0-73ce9dfb0034",
+        "playerId": "04e2937d-c9c7-4ba5-941c-34260d37f5d0",
+        "data": {
+          "type": "state",
+          "positions": {
+            "04e2937d-c9c7-4ba5-941c-34260d37f5d0": 15,
+            "fbc9d280-6230-4126-88d8-c3296d365218": 0,
+            "7e931c76-86f8-4f79-b9a3-5e2db575476d": 0
+          },
+          "playerOrder": [
+            "04e2937d-c9c7-4ba5-941c-34260d37f5d0",
+            "fbc9d280-6230-4126-88d8-c3296d365218",
+            "7e931c76-86f8-4f79-b9a3-5e2db575476d"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "04e2937d-c9c7-4ba5-941c-34260d37f5d0": 0,
+            "fbc9d280-6230-4126-88d8-c3296d365218": 0,
+            "7e931c76-86f8-4f79-b9a3-5e2db575476d": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "j tira 3 → Casella 15",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "j tira 4 → Casella 4"
+            },
+            {
+              "text": "j tira 2 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! j va alla casella 12"
+            },
+            {
+              "text": "j tira 3 → Casella 15"
+            },
+            {
+              "text": "🕳️ POZZO! j e' bloccato finche' qualcuno non lo libera!"
+            }
+          ],
+          "version": 6
+        },
+        "timestamp": "2026-03-30T14:13:36.223Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T14:12:05.803Z",
+    "updatedAt": "2026-03-30T14:13:36.223Z"
+  },
+  {
+    "id": "2e8e79f8-f9c6-4a2e-974e-93fd66edc501",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+        "name": "k",
+        "joinedAt": "2026-03-30T14:15:46.100Z"
+      },
+      {
+        "id": "481d486c-0a99-45f5-897a-f8b61ccb437f",
+        "name": "weegee",
+        "joinedAt": "2026-03-30T14:16:23.460Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "9430d440-244d-4ab8-9cd5-817d018ac753",
+        "playerId": "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 3
+          },
+          "playerOrder": [
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "k tira 3 → Casella 3",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "k tira 3 → Casella 3"
+            }
+          ],
+          "version": 2
+        },
+        "timestamp": "2026-03-30T14:16:30.257Z"
+      },
+      {
+        "id": "81429649-ca4f-4a62-8db4-bcfdd3893980",
+        "playerId": "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 12,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "playerOrder": [
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+            "481d486c-0a99-45f5-897a-f8b61ccb437f"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 0,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "lastRoll": 3,
+          "lastAction": "k tira 3 → Casella 6",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "k tira 3 → Casella 3"
+            },
+            {
+              "text": "k tira 3 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! k va alla casella 12"
+            }
+          ],
+          "version": 4
+        },
+        "timestamp": "2026-03-30T14:16:34.759Z"
+      },
+      {
+        "id": "4b2470bf-68df-4d94-ab51-b968f9e83cb8",
+        "playerId": "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 24,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "playerOrder": [
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+            "481d486c-0a99-45f5-897a-f8b61ccb437f"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 0,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "lastRoll": 6,
+          "lastAction": "k tira 6 → Casella 18",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "k tira 3 → Casella 3"
+            },
+            {
+              "text": "k tira 3 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! k va alla casella 12"
+            },
+            {
+              "text": "k tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! k avanza ancora di 6 → Casella 24"
+            }
+          ],
+          "version": 6
+        },
+        "timestamp": "2026-03-30T14:16:36.244Z"
+      },
+      {
+        "id": "c0e13c4b-7ac8-45e5-9f6d-567e6cd675d1",
+        "playerId": "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 29,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "playerOrder": [
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+            "481d486c-0a99-45f5-897a-f8b61ccb437f"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 0,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "k tira 5 → Casella 29",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "k tira 3 → Casella 3"
+            },
+            {
+              "text": "k tira 3 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! k va alla casella 12"
+            },
+            {
+              "text": "k tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! k avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "k tira 5 → Casella 29"
+            }
+          ],
+          "version": 7
+        },
+        "timestamp": "2026-03-30T14:16:38.151Z"
+      },
+      {
+        "id": "683af787-5ce9-4f4c-ace4-a67ed99a125c",
+        "playerId": "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 26,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "playerOrder": [
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+            "481d486c-0a99-45f5-897a-f8b61ccb437f"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 0,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "lastRoll": 5,
+          "lastAction": "k tira 5, rimbalza! Torna a casella 26",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "k tira 3 → Casella 3"
+            },
+            {
+              "text": "k tira 3 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! k va alla casella 12"
+            },
+            {
+              "text": "k tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! k avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "k tira 5 → Casella 29"
+            },
+            {
+              "text": "k tira 5, rimbalza! Torna a casella 26"
+            }
+          ],
+          "version": 8
+        },
+        "timestamp": "2026-03-30T14:16:39.294Z"
+      },
+      {
+        "id": "acdd8ce3-706a-42c0-a451-d3b9df28b401",
+        "playerId": "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+        "data": {
+          "type": "state",
+          "positions": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 0,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "playerOrder": [
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46",
+            "481d486c-0a99-45f5-897a-f8b61ccb437f"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "a9ad5fff-6863-4b42-ac5b-668299ea4b46": 0,
+            "481d486c-0a99-45f5-897a-f8b61ccb437f": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "k tira 2 → Casella 28",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "k tira 3 → Casella 3"
+            },
+            {
+              "text": "k tira 3 → Casella 6"
+            },
+            {
+              "text": "🌉 Ponte! k va alla casella 12"
+            },
+            {
+              "text": "k tira 6 → Casella 18"
+            },
+            {
+              "text": "🦆 OCA! k avanza ancora di 6 → Casella 24"
+            },
+            {
+              "text": "k tira 5 → Casella 29"
+            },
+            {
+              "text": "k tira 5, rimbalza! Torna a casella 26"
+            },
+            {
+              "text": "k tira 2 → Casella 28"
+            },
+            {
+              "text": "💀 MORTE! k torna alla partenza!"
+            }
+          ],
+          "version": 10
+        },
+        "timestamp": "2026-03-30T14:16:41.941Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T14:15:45.996Z",
+    "updatedAt": "2026-03-30T14:16:41.941Z"
+  },
+  {
+    "id": "f9216c25-923e-487e-a1c5-7a4dfa5b2123",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "8acced23-4933-4037-8896-c419002b7295",
+        "name": "m",
+        "joinedAt": "2026-03-30T14:18:45.118Z"
+      },
+      {
+        "id": "cf940f46-b12f-4278-8585-c95df13b9086",
+        "name": "weegee",
+        "joinedAt": "2026-03-30T14:19:09.008Z"
+      }
+    ],
+    "moves": [
+      {
+        "id": "e688d79a-cf58-4756-8db9-146b96038d90",
+        "playerId": "8acced23-4933-4037-8896-c419002b7295",
+        "data": {
+          "type": "state",
+          "positions": {
+            "8acced23-4933-4037-8896-c419002b7295": 0,
+            "cf940f46-b12f-4278-8585-c95df13b9086": 0
+          },
+          "playerOrder": [
+            "8acced23-4933-4037-8896-c419002b7295",
+            "cf940f46-b12f-4278-8585-c95df13b9086"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "8acced23-4933-4037-8896-c419002b7295": 0,
+            "cf940f46-b12f-4278-8585-c95df13b9086": 0
+          },
+          "lastRoll": 0,
+          "lastAction": "Si è unito weegee",
+          "gameOver": false,
+          "winner": null,
+          "log": [],
+          "version": 0
+        },
+        "timestamp": "2026-03-30T14:19:09.118Z"
+      },
+      {
+        "id": "d715d8ef-e8fc-416f-8d7e-0d1e3b4c16b7",
+        "playerId": "8acced23-4933-4037-8896-c419002b7295",
+        "data": {
+          "type": "state",
+          "positions": {
+            "8acced23-4933-4037-8896-c419002b7295": 2,
+            "cf940f46-b12f-4278-8585-c95df13b9086": 0
+          },
+          "playerOrder": [
+            "8acced23-4933-4037-8896-c419002b7295",
+            "cf940f46-b12f-4278-8585-c95df13b9086"
+          ],
+          "currentPlayerIndex": 0,
+          "skippedTurns": {
+            "8acced23-4933-4037-8896-c419002b7295": 0,
+            "cf940f46-b12f-4278-8585-c95df13b9086": 0
+          },
+          "lastRoll": 2,
+          "lastAction": "m tira 2 → Casella 2",
+          "gameOver": false,
+          "winner": null,
+          "log": [
+            {
+              "text": "Partita creata! In attesa di altri giocatori..."
+            },
+            {
+              "text": "m tira 2 → Casella 2"
+            }
+          ],
+          "version": 2
+        },
+        "timestamp": "2026-03-30T14:19:17.567Z"
+      }
+    ],
+    "status": "active",
+    "createdAt": "2026-03-30T14:18:45.013Z",
+    "updatedAt": "2026-03-30T14:19:17.567Z"
+  },
+  {
+    "id": "5b12f2c0-4168-4ea9-80c8-588b112bcde2",
+    "name": "Gioco dell'Oca",
+    "ownerId": "f90f4932-4cba-4dd7-b820-d94d458265c8",
+    "players": [
+      {
+        "id": "c99a3d01-9a57-4307-905f-5efa48594e63",
+        "name": "n",
+        "joinedAt": "2026-03-30T14:21:33.640Z"
+      },
+      {
+        "id": "447334f0-940d-4ae5-b0e4-44a7527607ea",
+        "name": "weegee",
+        "joinedAt": "2026-03-30T14:22:06.152Z"
+      }
+    ],
+    "moves": [],
+    "status": "active",
+    "createdAt": "2026-03-30T14:21:33.570Z",
+    "updatedAt": "2026-03-30T14:22:06.152Z"
   }
 ]

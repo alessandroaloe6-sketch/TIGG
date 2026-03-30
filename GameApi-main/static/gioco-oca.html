@@ -281,10 +281,6 @@
         <input type="text" placeholder="Nome giocatore 1" value="Giocatore 1">
         <input type="color" class="player-color" value="#e74c3c">
       </div>
-      <div class="player-row">
-        <input type="text" placeholder="Nome giocatore 2" value="Giocatore 2">
-        <input type="color" class="player-color" value="#3498db">
-      </div>
     </div>
     <div class="add-player-row">
       <button class="btn btn-sm" onclick="addPlayerInput()">+ Aggiungi giocatore</button>
@@ -295,8 +291,16 @@
 
     <div style="margin-top:16px; border-top:1px solid rgba(255,255,255,0.1); padding-top:14px;">
       <label>Oppure carica partita esistente</label>
-      <input type="text" id="load-game-id" placeholder="Game ID da caricare">
-      <button class="btn btn-sm" style="width:100%;" onclick="loadExistingGame()">Carica partita</button>
+      <input type="text" id="load-game-id" placeholder="Game ID da caricare" style="margin-bottom:8px;">
+      <input type="text" id="player-nickname" placeholder="Il tuo nickname (es. Mario, Giulia...)" value="" style="margin-bottom:8px;">
+      <div style="margin-bottom:8px;">
+        <label style="display:block; margin-bottom:4px;">Scegli il tuo colore:</label>
+        <input type="color" id="player-color" value="#3498db">
+      </div>
+      <button class="btn btn-sm" style="width:100%;" onclick="loadExistingGame()">Unisciti alla partita</button>
+      <div id="auto-assign-notice" style="font-size:0.8rem; color:#aaa; margin-top:8px; text-align:center;">
+        Inserisci Game ID, nickname e colore per unirti
+      </div>
     </div>
 
     <div class="status-msg" id="status-msg"></div>
@@ -307,10 +311,13 @@
 <div id="game-screen">
   <div class="game-header">
     <div class="game-title">&#x1F986; Gioco dell'Oca</div>
-    <div style="display:flex; gap:8px; flex-wrap:wrap;">
-      <button class="btn btn-sm" onclick="copyGameId()">Copia Game ID</button>
-      <button class="btn btn-sm" onclick="shareLink()">Condividi Link</button>
-      <button class="btn btn-sm" onclick="location.reload()">Nuova partita</button>
+    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+      <div id="my-player-indicator" style="font-size:0.85rem; color:#f5af19; font-weight:600;"></div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn btn-sm" onclick="copyGameId()">Copia Game ID</button>
+        <button class="btn btn-sm" onclick="shareLink()">Condividi Link</button>
+        <button class="btn btn-sm" onclick="location.reload()">Nuova partita</button>
+      </div>
     </div>
   </div>
 
@@ -352,8 +359,11 @@
 
 <script>
 // ═══════════════════════════════════════
-// CONFIG
+// UTILITY FUNCTIONS
 // ═══════════════════════════════════════
+function generateSessionId() {
+  return 'session_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+}
 const TOTAL_CELLS = 30;
 
 // Auto-detect: l'URL del server e' lo stesso da cui viene servita la pagina
@@ -376,35 +386,29 @@ const SPECIAL_CELLS = {
 const defaultColors = ['#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6','#1abc9c'];
 
 // ═══════════════════════════════════════
-// STATE
+// STATE (usa API key fissa TIGG_Games_New)
 // ═══════════════════════════════════════
 let state = {
-  apiKey: '',
+  apiKey: '1b9a3889-c773-4f10-8376-7ac89d83d68c9f35b014bd914285a98cd00bc5b39f5a', // TIGG_Games_New API key
   gameId: '',
   players: [],
   currentIndex: 0,
   log: [],
   gameOver: false,
   winner: null,
+  myPlayerIndex: null, // Nuovo: indice del giocatore controllato da questo PC
+  sessionId: null, // Nuovo: ID univoco per questa sessione
 };
 
-// ═══════════════════════════════════════
-// AUTO-REGISTER (nessuna API key richiesta!)
-// ═══════════════════════════════════════
-async function autoRegister() {
-  const randomName = 'oca_player_' + Math.random().toString(36).substring(2, 10);
-  const res = await fetch(API_URL + '/auth/register', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: randomName }),
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || 'Registrazione fallita');
-  return data.user.apiKey;
-}
+let syncInterval = null;
+let lastLogLength = 0;
 
 // ═══════════════════════════════════════
-// API HELPER
+// AUTO-REGISTER (rimosso - ora usa API key fissa TIGG_Games)
+// ═══════════════════════════════════════
+
+// ═══════════════════════════════════════
+// API HELPER (usa API key fissa TIGG_Games_New)
 // ═══════════════════════════════════════
 async function api(method, path, body) {
   const opts = {
@@ -443,7 +447,7 @@ function addPlayerInput() {
 
 function removePlayerInput() {
   const container = document.getElementById('player-inputs');
-  if (container.children.length <= 2) return toast('Servono almeno 2 giocatori');
+  if (container.children.length <= 1) return toast('Serve almeno 1 giocatore');
   container.removeChild(container.lastChild);
 }
 
@@ -453,9 +457,8 @@ async function startGame() {
   setStatus('Connessione al server...', '');
 
   try {
-    // 1. Auto-registra un utente per ottenere la API key
-    state.apiKey = await autoRegister();
-    setStatus('Registrato! Creo la partita...', 'ok');
+    // Usa l'API key fissa TIGG_Games
+    setStatus('Creo la partita...', 'ok');
 
     const gameName = document.getElementById('game-name').value.trim() || "Gioco dell'Oca";
     const rows = document.querySelectorAll('#player-inputs .player-row');
@@ -468,32 +471,34 @@ async function startGame() {
       if (name) { playerNames.push(name); playerColors.push(color); }
     });
 
-    if (playerNames.length < 2) { btn.disabled = false; return toast('Servono almeno 2 giocatori', true); }
+    if (playerNames.length < 1) { btn.disabled = false; return toast('Servono almeno 1 giocatore', true); }
 
-    // 2. Crea il gioco via API
+    // 1. Crea il gioco via API
     const gameRes = await api('POST', '/games', { name: gameName });
     state.gameId = gameRes.game.id;
 
-    // 3. Aggiungi i giocatori via API
+    // 2. Assegna automaticamente il primo giocatore (Giocatore 1) al creatore
+    state.myPlayerIndex = 0;
+    state.sessionId = generateSessionId();
+
+    // 3. Aggiungi il creatore come primo giocatore via API
     state.players = [];
-    for (let i = 0; i < playerNames.length; i++) {
-      const pRes = await api('POST', '/games/' + state.gameId + '/players', { name: playerNames[i] });
-      state.players.push({
-        id: pRes.player.id,
-        name: playerNames[i],
-        color: playerColors[i],
-        position: 0,
-        skippedTurns: 0,
-        inWell: false,
-      });
-    }
+    const pRes = await api('POST', '/games/' + state.gameId + '/players', { name: playerNames[0] });
+    state.players.push({
+      id: pRes.player.id,
+      name: playerNames[0],
+      color: playerColors[0],
+      position: 0,
+      skippedTurns: 0,
+      inWell: false,
+    });
 
     state.currentIndex = 0;
     state.log = [];
     state.gameOver = false;
     state.winner = null;
 
-    addLog('Partita iniziata! ' + playerNames.join(' vs '));
+    addLog('Partita creata! In attesa di altri giocatori...');
     showGameScreen();
   } catch (e) {
     btn.disabled = false;
@@ -504,13 +509,14 @@ async function startGame() {
 
 async function loadExistingGame() {
   const gameId = document.getElementById('load-game-id').value.trim();
+  const playerNickname = document.getElementById('player-nickname').value.trim();
+  const playerColor = document.getElementById('player-color').value;
+  
   if (!gameId) return toast('Inserisci il Game ID', true);
-
-  setStatus('Connessione...', '');
+  if (!playerNickname) return toast('Inserisci il tuo nickname', true);
 
   try {
-    state.apiKey = await autoRegister();
-
+    // Usa l'API key fissa TIGG_Games
     const gameRes = await api('GET', '/games/' + gameId);
     state.gameId = gameId;
 
@@ -531,13 +537,40 @@ async function loadExistingGame() {
       };
     });
 
+    // Assegna automaticamente il prossimo giocatore disponibile (basato sul numero di giocatori esistenti)
+    const nextPlayerIndex = state.players.length;
+    if (nextPlayerIndex >= 4) {
+      throw new Error('Il gioco è già pieno! Massimo 4 giocatori.');
+    }
+    
+    state.myPlayerIndex = nextPlayerIndex;
+    state.sessionId = generateSessionId();
+
+    // Aggiungi il nuovo giocatore al gioco
+    const pRes = await api('POST', '/games/' + gameId + '/players', { name: playerNickname });
+    state.players.push({
+      id: pRes.player.id,
+      name: playerNickname,
+      color: playerColor,
+      position: 0,
+      skippedTurns: 0,
+      inWell: false,
+    });
+    
+    // NON salvare lo stato per evitare di sovrascrivere currentIndex
+    // await saveStateToApi(0, 'Si è unito ' + playerNickname);
+    
+    // Aggiungi al log locale
+    addLog('Si è unito ' + playerNickname + '!');
+    
+    toast(`Ti sei unito come ${playerNickname}!`);
+
     state.currentIndex = lastState ? (lastState.currentPlayerIndex || 0) : 0;
     state.gameOver = lastState ? (lastState.gameOver || false) : false;
     state.winner = lastState ? lastState.winner : null;
     state.log = lastState && lastState.log ? lastState.log.map(function(l) { return l.text; }) : [];
 
     showGameScreen();
-    toast('Partita caricata!');
   } catch (e) {
     setStatus('Errore: ' + e.message, 'err');
     toast('Errore: ' + e.message, true);
@@ -552,6 +585,119 @@ function showGameScreen() {
   document.getElementById('game-screen').style.display = 'block';
   buildBoard();
   renderAll();
+  
+  // Avvia il polling per sincronizzare la partita in tempo reale
+  if (syncInterval) clearInterval(syncInterval);
+  syncInterval = setInterval(syncGameState, 500); // Aggiorna ogni 500ms invece di 1000ms
+}
+
+async function syncGameState() {
+  try {
+    // Prima ottieni la lista aggiornata dei giocatori
+    const playersRes = await api('GET', '/games/' + state.gameId + '/players');
+    
+    const movesRes = await api('GET', '/games/' + state.gameId + '/moves');
+    const stateMoves = movesRes.moves.filter(function(m) { return m.data && m.data.type === 'state'; });
+    const lastState = stateMoves.length > 0 ? stateMoves[stateMoves.length - 1].data : null;
+
+    // Aggiorna sempre la lista dei giocatori
+    let stateChanged = false;
+    if (playersRes.players.length !== state.players.length) {
+      state.players = playersRes.players.map(function(p, i) {
+        // Mantieni il myPlayerIndex se il giocatore è quello controllato da questo client
+        const existingPlayer = state.players.find(function(ep) { return ep.id === p.id; });
+        return {
+          id: p.id,
+          name: p.name,
+          color: existingPlayer ? existingPlayer.color : defaultColors[i % defaultColors.length],
+          position: lastState ? (lastState.positions ? (lastState.positions[p.id] || 0) : 0) : (existingPlayer ? existingPlayer.position : 0),
+          skippedTurns: lastState ? (lastState.skippedTurns ? (lastState.skippedTurns[p.id] || 0) : 0) : (existingPlayer ? existingPlayer.skippedTurns : 0),
+          inWell: existingPlayer ? existingPlayer.inWell : false,
+        };
+      });
+      stateChanged = true;
+    }
+
+    if (!lastState) {
+      if (stateChanged) renderAll();
+      return;
+    }
+
+    // Aggiorna lo stato se è cambiato
+    let stateChanged = false;
+
+    // Aggiorna la lista dei giocatori se è cambiata
+    if (playersRes.players.length !== state.players.length) {
+      state.players = playersRes.players.map(function(p, i) {
+        // Mantieni il myPlayerIndex se il giocatore è quello controllato da questo client
+        const existingPlayer = state.players.find(function(ep) { return ep.id === p.id; });
+        return {
+          id: p.id,
+          name: p.name,
+          color: existingPlayer ? existingPlayer.color : defaultColors[i % defaultColors.length],
+          position: lastState.positions ? (lastState.positions[p.id] || 0) : (existingPlayer ? existingPlayer.position : 0),
+          skippedTurns: lastState.skippedTurns ? (lastState.skippedTurns[p.id] || 0) : (existingPlayer ? existingPlayer.skippedTurns : 0),
+          inWell: existingPlayer ? existingPlayer.inWell : false,
+        };
+      });
+      stateChanged = true;
+    }
+
+    // Verifica se ci sono nuovi log
+    if (lastState.log && lastState.log.length > state.log.length) {
+      state.log = lastState.log.map(function(l) { return l.text; });
+      stateChanged = true;
+    }
+
+    // Aggiorna le posizioni dei giocatori
+    if (lastState.positions) {
+      state.players.forEach(function(p) {
+        if (lastState.positions[p.id] !== undefined && lastState.positions[p.id] !== p.position) {
+          p.position = lastState.positions[p.id];
+          stateChanged = true;
+        }
+      });
+    }
+
+    // Aggiorna i turni saltati
+    if (lastState.skippedTurns) {
+      state.players.forEach(function(p) {
+        if (lastState.skippedTurns[p.id] !== undefined && lastState.skippedTurns[p.id] !== p.skippedTurns) {
+          p.skippedTurns = lastState.skippedTurns[p.id];
+          stateChanged = true;
+        }
+      });
+    }
+
+    // Aggiorna il turno attuale
+    if (lastState.currentPlayerIndex !== undefined && lastState.currentPlayerIndex !== state.currentIndex) {
+      state.currentIndex = lastState.currentPlayerIndex;
+      stateChanged = true;
+    }
+
+    // Aggiorna lo stato della partita
+    if (lastState.gameOver !== undefined && lastState.gameOver !== state.gameOver) {
+      state.gameOver = lastState.gameOver;
+      stateChanged = true;
+    }
+
+    if (lastState.winner !== undefined && lastState.winner !== state.winner) {
+      state.winner = lastState.winner;
+      stateChanged = true;
+    }
+
+    if (stateChanged) {
+      renderAll();
+
+      // Se è finita la partita, mostra il vincitore
+      if (state.gameOver && state.winner) {
+        const winner = state.players.find(function(p) { return p.name === state.winner; });
+        if (winner) showWinner(winner);
+      }
+    }
+  } catch (e) {
+    console.error('Errore sincronizzazione:', e);
+  }
 }
 
 function buildBoard() {
@@ -608,7 +754,13 @@ function buildBoard() {
   });
 }
 
-function renderAll() { renderTokens(); renderScoreboard(); renderLog(); renderTurn(); }
+function renderAll() { 
+  renderTokens(); 
+  renderScoreboard(); 
+  renderLog(); 
+  renderTurn(); 
+  renderMyPlayerIndicator();
+}
 
 function renderTokens() {
   document.querySelectorAll('.players-in-cell').forEach(function(el) { el.innerHTML = ''; });
@@ -655,22 +807,63 @@ function renderLog() {
 function renderTurn() {
   var player = state.players[state.currentIndex];
   var el = document.getElementById('turn-player');
+  var btn = document.getElementById('btn-roll');
+  
   if (state.gameOver) {
     el.textContent = 'Partita finita!';
-    document.getElementById('btn-roll').disabled = true;
+    btn.disabled = true;
+    btn.textContent = 'Partita finita';
+  } else if (state.players.length < 2) {
+    el.textContent = 'In attesa di giocatori...';
+    btn.disabled = true;
+    btn.textContent = 'Aspetta giocatori';
   } else {
     el.innerHTML = '<span style="color:' + player.color + ';">' + player.name + '</span>';
-    document.getElementById('btn-roll').disabled = false;
+    
+    // Abilita il bottone solo se è il turno del giocatore controllato da questo PC
+    if (state.myPlayerIndex !== null && state.currentIndex === state.myPlayerIndex) {
+      btn.disabled = false;
+      btn.textContent = 'Tira il dado';
+    } else {
+      btn.disabled = true;
+      btn.textContent = 'Aspetta il tuo turno';
+    }
   }
 }
 
-function addLog(text) { state.log.push(text); renderLog(); }
+function addLog(text) { 
+  state.log.push(text); 
+  renderLog(); 
+}
+
+function renderMyPlayerIndicator() {
+  const indicator = document.getElementById('my-player-indicator');
+  if (state.myPlayerIndex !== null && state.players[state.myPlayerIndex]) {
+    const player = state.players[state.myPlayerIndex];
+    indicator.textContent = `Controlli: ${player.name}`;
+    indicator.style.color = player.color;
+  } else {
+    indicator.textContent = '';
+  }
+}
 
 // ═══════════════════════════════════════
 // GAME LOGIC
 // ═══════════════════════════════════════
 async function rollDice() {
   if (state.gameOver) return;
+  
+  // Controlla che ci siano almeno 2 giocatori
+  if (state.players.length < 2) {
+    toast('Aspetta che si uniscano altri giocatori!', true);
+    return;
+  }
+  
+  // Controlla che sia il turno del giocatore controllato da questo PC
+  if (state.myPlayerIndex === null || state.currentIndex !== state.myPlayerIndex) {
+    toast('Non è il tuo turno!', true);
+    return;
+  }
 
   var btn = document.getElementById('btn-roll');
   btn.disabled = true;
@@ -840,6 +1033,11 @@ function toast(msg, isError) {
   el.className = 'toast show' + (isError ? ' error' : '');
   setTimeout(function() { el.className = 'toast'; }, 3000);
 }
+
+// Inizializza la pagina quando si carica
+document.addEventListener('DOMContentLoaded', function() {
+  // Non serve più inizializzare niente
+});
 </script>
 </body>
 </html>
