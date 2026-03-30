@@ -3,1040 +3,863 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TIGG</title>
+<title>Gioco dell'Oca</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  color:#e0e0e0; min-height:100vh;
+}
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    color: #e0e0e0;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+/* ── Screens centrali ── */
+.screen {
+  display:none; flex-direction:column; align-items:center;
+  justify-content:center; min-height:100vh; padding:20px;
+}
+.screen.on { display:flex; }
+.box {
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15);
+  border-radius:16px; padding:34px; width:100%; max-width:460px;
+}
+h1 {
+  text-align:center; font-size:2rem; margin-bottom:6px;
+  background:linear-gradient(90deg,#f5af19,#f12711);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.sub { text-align:center; color:#aaa; margin-bottom:20px; font-size:0.87rem; }
+label { display:block; margin-bottom:3px; font-size:0.82rem; color:#ccc; }
+input, select {
+  width:100%; padding:10px 14px; border:1px solid rgba(255,255,255,0.2);
+  border-radius:8px; background:rgba(0,0,0,0.3); color:#fff;
+  font-size:0.93rem; margin-bottom:13px; outline:none;
+}
+input:focus, select:focus { border-color:#f5af19; }
+select option { background:#1a1a2e; }
 
-  #setup-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-  }
+.btn {
+  width:100%; padding:13px; border:none; border-radius:9px; cursor:pointer;
+  color:#fff; font-size:1rem; font-weight:700; transition:all 0.2s; margin-bottom:10px;
+}
+.btn:hover:not(:disabled) { transform:translateY(-1px); }
+.btn:disabled { opacity:0.4; cursor:not-allowed; transform:none !important; }
+.btn-orange { background:linear-gradient(135deg,#f5af19,#f12711); }
+.btn-orange:hover:not(:disabled) { box-shadow:0 4px 16px rgba(245,175,25,0.4); }
+.btn-blue   { background:linear-gradient(135deg,#2980b9,#1a5276); }
+.btn-green  { background:linear-gradient(135deg,#27ae60,#1e8449); }
 
-  .setup-box {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 16px;
-    padding: 36px;
-    width: 100%;
-    max-width: 500px;
-    backdrop-filter: blur(10px);
-  }
+.divider { border-top:1px solid rgba(255,255,255,0.1); margin:18px 0; }
+.st { text-align:center; font-size:0.82rem; margin-top:8px; min-height:18px; }
+.st.ok  { color:#4caf50; } .st.err { color:#ef5350; }
 
-  .setup-box h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 8px;
-    background: linear-gradient(90deg, #f5af19, #f12711);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+/* ── Lobby ── */
+.lobby-url {
+  background:rgba(0,0,0,0.3); border:1px solid rgba(245,175,25,0.3);
+  border-radius:8px; padding:10px 14px; font-size:0.8rem; color:#f5af19;
+  word-break:break-all; margin-bottom:14px; cursor:pointer;
+}
+.player-list { display:flex; flex-direction:column; gap:8px; margin:14px 0; }
+.player-item {
+  display:flex; align-items:center; gap:10px; padding:10px 14px;
+  border-radius:9px; background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+}
+.pdot { width:18px; height:18px; border-radius:50%; border:2px solid rgba(255,255,255,0.3); flex-shrink:0; }
+.pinfo { flex:1; }
+.pname { font-weight:600; font-size:0.9rem; }
+.ptag  { font-size:0.72rem; color:#aaa; }
+.ptag.you { color:#f5af19; }
 
-  .setup-box h1 span { font-size: 2.4rem; }
+/* ── Game ── */
+#game-screen { display:none; padding:16px; }
+.game-header {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:14px; flex-wrap:wrap; gap:8px;
+}
+.game-title {
+  font-size:1.25rem; font-weight:700;
+  background:linear-gradient(90deg,#f5af19,#f12711);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.hbtns { display:flex; gap:6px; flex-wrap:wrap; }
+.btn-sm {
+  padding:6px 13px; font-size:0.79rem; cursor:pointer;
+  background:rgba(255,255,255,0.1); color:#ccc;
+  border:1px solid rgba(255,255,255,0.2); border-radius:7px;
+}
+.btn-sm:hover { background:rgba(255,255,255,0.18); }
 
-  .setup-box p.sub {
-    text-align: center;
-    color: #aaa;
-    margin-bottom: 24px;
-    font-size: 0.9rem;
-  }
+.layout { display:grid; grid-template-columns:1fr 300px; gap:14px; max-width:1100px; margin:0 auto; }
+@media(max-width:860px){ .layout { grid-template-columns:1fr; } }
 
-  label { display: block; margin-bottom: 4px; font-size: 0.85rem; color: #ccc; }
+.board-wrap {
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px; padding:18px;
+}
+.board { display:grid; grid-template-columns:repeat(6,1fr); gap:5px; }
 
-  input, select {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 8px;
-    background: rgba(0,0,0,0.3);
-    color: #fff;
-    font-size: 0.95rem;
-    margin-bottom: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
+.cell {
+  aspect-ratio:1; border-radius:9px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; position:relative;
+  border:2px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); min-height:60px;
+}
+.cn { font-size:0.6rem; color:#777; position:absolute; top:3px; left:5px; }
+.ci { font-size:1.25rem; }
+.cl { font-size:0.56rem; color:#bbb; margin-top:1px; }
+.pcw { display:flex; gap:2px; position:absolute; bottom:3px; flex-wrap:wrap; justify-content:center; }
+.tok { width:13px; height:13px; border-radius:50%; border:2px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,0.5); }
 
-  input:focus, select:focus { border-color: #f5af19; }
+.c-start  { background:rgba(76,175,80,0.2);  border-color:#4caf50; }
+.c-goose  { background:rgba(255,235,59,0.15); border-color:#fdd835; }
+.c-bridge { background:rgba(139,69,19,0.25);  border-color:#8d6e63; }
+.c-well   { background:rgba(33,150,243,0.2);  border-color:#42a5f5; }
+.c-maze   { background:rgba(156,39,176,0.2);  border-color:#ab47bc; }
+.c-prison { background:rgba(96,96,96,0.3);    border-color:#757575; }
+.c-death  { background:rgba(244,67,54,0.25);  border-color:#ef5350; }
+.c-finish { background:rgba(255,215,0,0.25);  border-color:#ffd700; }
 
-  .player-inputs { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.sidebar { display:flex; flex-direction:column; gap:12px; }
+.panel { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:14px; }
+.panel h3 { font-size:0.87rem; margin-bottom:10px; color:#f5af19; }
 
-  .player-row { display: flex; gap: 8px; align-items: center; }
-  .player-row input { margin-bottom: 0; flex: 1; }
+.turn-panel { text-align:center; }
+.badge-turn { display:inline-block; padding:4px 14px; border-radius:20px; font-size:0.77rem; margin-bottom:8px; }
+.badge-go   { background:rgba(245,175,25,0.2); border:1px solid #f5af19; color:#f5af19; animation:pulse 1.2s ease infinite; }
+.badge-wait { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#999; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
 
-  .player-color {
-    width: 36px; height: 36px; border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.3); cursor: pointer; flex-shrink: 0;
-  }
+.turn-name { font-size:1.15rem; font-weight:700; margin-bottom:12px; }
+.dice {
+  width:72px; height:72px; background:#fff; border-radius:12px; margin:0 auto 12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:2.2rem; font-weight:900; color:#1a1a2e; box-shadow:0 4px 14px rgba(0,0,0,0.3);
+}
+.dice.spin { animation:dspin 0.55s ease; }
+@keyframes dspin {
+  0%{transform:rotate(0) scale(1)} 35%{transform:rotate(130deg) scale(1.1)}
+  70%{transform:rotate(250deg) scale(0.9)} 100%{transform:rotate(360deg) scale(1)}
+}
+.btn-roll {
+  padding:11px 32px; border:none; border-radius:9px; cursor:pointer;
+  background:linear-gradient(135deg,#f5af19,#f12711);
+  color:#fff; font-size:0.97rem; font-weight:700; transition:all 0.2s;
+}
+.btn-roll:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 4px 14px rgba(245,175,25,0.5); }
+.btn-roll:disabled { opacity:0.35; cursor:not-allowed; }
 
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-    padding: 10px 20px; border: none; border-radius: 8px;
-    font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
-  }
+.scores { display:flex; flex-direction:column; gap:7px; }
+.sr { display:flex; align-items:center; gap:9px; padding:7px 9px; border-radius:7px; background:rgba(255,255,255,0.03); }
+.sr.active { background:rgba(245,175,25,0.14); }
+.sr.me     { border-left:3px solid #f5af19; }
+.sdot { width:15px; height:15px; border-radius:50%; border:2px solid rgba(255,255,255,0.4); flex-shrink:0; }
+.sname { flex:1; font-weight:600; font-size:0.86rem; }
+.spos  { font-size:0.75rem; color:#aaa; }
 
-  .btn-primary {
-    background: linear-gradient(135deg, #f5af19, #f12711);
-    color: #fff; width: 100%; padding: 14px; font-size: 1.05rem;
-  }
+.log-box { max-height:185px; overflow-y:auto; display:flex; flex-direction:column; gap:3px; }
+.log-e { font-size:0.74rem; color:#bbb; padding:3px 7px; border-radius:4px; background:rgba(0,0,0,0.2); }
+.log-e:first-child { color:#fff; background:rgba(245,175,25,0.12); }
+.log-box::-webkit-scrollbar { width:3px; }
+.log-box::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.15); border-radius:2px; }
 
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(245,175,25,0.4); }
-  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+/* Winner */
+.winner-ov {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.82);
+  z-index:100; align-items:center; justify-content:center; flex-direction:column; gap:18px;
+}
+.winner-ov.on { display:flex; }
+.wtext {
+  font-size:2.8rem; font-weight:900; text-align:center;
+  background:linear-gradient(90deg,#ffd700,#f5af19,#f12711);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation:wpulse 1.5s ease infinite;
+}
+@keyframes wpulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
 
-  .btn-sm {
-    padding: 6px 14px; font-size: 0.8rem;
-    background: rgba(255,255,255,0.1); color: #ccc;
-    border: 1px solid rgba(255,255,255,0.2); border-radius: 6px;
-  }
-
-  .btn-sm:hover { background: rgba(255,255,255,0.2); }
-  .add-player-row { display: flex; gap: 8px; margin-bottom: 14px; }
-
-  #game-screen { display: none; padding: 16px; }
-
-  .game-header {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 16px; flex-wrap: wrap; gap: 10px;
-  }
-
-  .game-title {
-    font-size: 1.3rem; font-weight: 700;
-    background: linear-gradient(90deg, #f5af19, #f12711);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-
-  .game-layout {
-    display: grid; grid-template-columns: 1fr 320px;
-    gap: 16px; max-width: 1200px; margin: 0 auto;
-  }
-
-  @media (max-width: 900px) { .game-layout { grid-template-columns: 1fr; } }
-
-  .board-container {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px; padding: 20px; position: relative;
-  }
-
-  .board { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
-
-  .cell {
-    aspect-ratio: 1; border-radius: 10px; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600;
-    position: relative; border: 2px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.05); transition: all 0.3s; min-height: 70px;
-  }
-
-  .cell .cell-num { font-size: 0.65rem; color: #999; position: absolute; top: 3px; left: 6px; }
-  .cell .cell-icon { font-size: 1.4rem; }
-  .cell .cell-label { font-size: 0.6rem; color: #bbb; margin-top: 2px; }
-
-  .cell-start { background: rgba(76,175,80,0.2); border-color: #4caf50; }
-  .cell-goose { background: rgba(255,235,59,0.15); border-color: #fdd835; }
-  .cell-bridge { background: rgba(139,69,19,0.25); border-color: #8d6e63; }
-  .cell-well { background: rgba(33,150,243,0.2); border-color: #42a5f5; }
-  .cell-maze { background: rgba(156,39,176,0.2); border-color: #ab47bc; }
-  .cell-prison { background: rgba(96,96,96,0.3); border-color: #757575; }
-  .cell-death { background: rgba(244,67,54,0.25); border-color: #ef5350; }
-  .cell-finish { background: rgba(255,215,0,0.25); border-color: #ffd700; }
-
-  .cell .players-in-cell {
-    display: flex; gap: 3px; position: absolute; bottom: 3px;
-    flex-wrap: wrap; justify-content: center;
-  }
-
-  .player-token {
-    width: 14px; height: 14px; border-radius: 50%;
-    border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.5); transition: all 0.4s ease;
-  }
-
-  .sidebar { display: flex; flex-direction: column; gap: 12px; }
-
-  .panel {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px; padding: 16px;
-  }
-
-  .panel h3 { font-size: 0.9rem; margin-bottom: 10px; color: #f5af19; }
-
-  .current-turn { text-align: center; padding: 16px; font-size: 1rem; }
-  .current-turn .turn-player { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
-
-  .dice-area { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-
-  .dice {
-    width: 80px; height: 80px; background: #fff; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem; font-weight: 900; color: #1a1a2e;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.3s; user-select: none;
-  }
-
-  .dice.rolling { animation: diceRoll 0.6s ease; }
-
-  @keyframes diceRoll {
-    0% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(90deg) scale(1.1); }
-    50% { transform: rotate(180deg) scale(0.9); }
-    75% { transform: rotate(270deg) scale(1.05); }
-    100% { transform: rotate(360deg) scale(1); }
-  }
-
-  .btn-roll {
-    background: linear-gradient(135deg, #f5af19, #f12711);
-    color: #fff; padding: 12px 40px; font-size: 1.1rem; font-weight: 700;
-    border: none; border-radius: 10px; cursor: pointer; transition: all 0.2s;
-  }
-
-  .btn-roll:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(245,175,25,0.5); }
-  .btn-roll:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
-
-  .scoreboard { display: flex; flex-direction: column; gap: 8px; }
-
-  .score-row {
-    display: flex; align-items: center; gap: 10px; padding: 8px 10px;
-    border-radius: 8px; background: rgba(255,255,255,0.03); transition: background 0.2s;
-  }
-
-  .score-row.active { background: rgba(245,175,25,0.15); }
-
-  .score-dot {
-    width: 18px; height: 18px; border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.4); flex-shrink: 0;
-  }
-
-  .score-name { flex: 1; font-weight: 600; font-size: 0.9rem; }
-  .score-pos { font-size: 0.8rem; color: #aaa; }
-
-  .log-box {
-    max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;
-  }
-
-  .log-entry {
-    font-size: 0.78rem; color: #bbb; padding: 4px 8px;
-    border-radius: 4px; background: rgba(0,0,0,0.2);
-  }
-
-  .log-entry:first-child { color: #fff; background: rgba(245,175,25,0.15); }
-
-  .log-box::-webkit-scrollbar { width: 4px; }
-  .log-box::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
-
-  .winner-overlay {
-    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8);
-    z-index: 100; align-items: center; justify-content: center; flex-direction: column; gap: 20px;
-  }
-
-  .winner-overlay.show { display: flex; }
-
-  .winner-text {
-    font-size: 3rem; font-weight: 900;
-    background: linear-gradient(90deg, #ffd700, #f5af19, #f12711);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    text-align: center; animation: winPulse 1.5s ease infinite;
-  }
-
-  @keyframes winPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-
-  .winner-sub { font-size: 1.2rem; color: #ccc; }
-
-  .toast {
-    position: fixed; bottom: 20px; left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: #333; color: #fff; padding: 12px 24px; border-radius: 10px;
-    font-size: 0.9rem; z-index: 200; transition: transform 0.3s ease;
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-
-  .toast.show { transform: translateX(-50%) translateY(0); }
-  .toast.error { border-color: #ef5350; }
-
-  .status-msg { text-align: center; font-size: 0.85rem; color: #aaa; margin-top: 10px; }
-  .status-msg.ok { color: #4caf50; }
-  .status-msg.err { color: #ef5350; }
+/* Toast */
+.toast {
+  position:fixed; bottom:18px; left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:#2a2a2a; color:#fff; padding:10px 22px;
+  border-radius:9px; font-size:0.87rem; z-index:200;
+  border:1px solid rgba(255,255,255,0.15); transition:transform 0.3s;
+  max-width:90vw; text-align:center;
+}
+.toast.on  { transform:translateX(-50%) translateY(0); }
+.toast.err { border-color:#ef5350; }
 </style>
 </head>
 <body>
 
-<!-- ========== SETUP SCREEN ========== -->
-<div id="setup-screen">
-  <div class="setup-box">
-    <h1><span>&#x1F986;</span> Gioco dell'Oca</h1>
-    <p class="sub">30 caselle &bull; caselle speciali classiche &bull; multiplayer online</p>
+<!-- ═══ SCREEN 1: HOME ═══ -->
+<div class="screen on" id="sc-home">
+  <div class="box">
+    <h1>&#x1F986; Gioco dell'Oca</h1>
+    <p class="sub">Ogni giocatore usa il proprio dispositivo e sceglie il proprio nome</p>
 
-    <label>Nome partita</label>
-    <input type="text" id="game-name" placeholder="es. Partita del lunedi" value="Gioco dell'Oca">
+    <label>Il tuo nome (sarai il Giocatore 1)</label>
+    <input id="h-name" placeholder="Es. Mario" maxlength="20">
+    <label>Numero massimo di giocatori</label>
+    <select id="h-max">
+      <option value="2">2 giocatori</option>
+      <option value="3">3 giocatori</option>
+      <option value="4" selected>4 giocatori</option>
+    </select>
+    <button class="btn btn-orange" onclick="createGame()">&#x1F3AE; Crea Partita</button>
 
-    <label>Giocatori</label>
-    <div class="player-inputs" id="player-inputs">
-      <div class="player-row">
-        <input type="text" placeholder="Nome giocatore 1" value="Giocatore 1">
-        <input type="color" class="player-color" value="#e74c3c">
-      </div>
-    </div>
-    <div class="add-player-row">
-      <button class="btn btn-sm" onclick="addPlayerInput()">+ Aggiungi giocatore</button>
-      <button class="btn btn-sm" onclick="removePlayerInput()">- Rimuovi</button>
-    </div>
+    <div class="divider"></div>
+    <p class="sub" style="margin-bottom:12px">Hai ricevuto un link? Unisciti qui:</p>
+    <label>Il tuo nome</label>
+    <input id="j-name" placeholder="Es. Luigi" maxlength="20">
+    <label>Game ID</label>
+    <input id="j-id" placeholder="Incolla il Game ID">
+    <button class="btn btn-blue" onclick="joinGame()">&#x1F517; Unisciti alla partita</button>
 
-    <button class="btn btn-primary" id="btn-start" onclick="startGame()">Inizia Partita</button>
-
-    <div style="margin-top:16px; border-top:1px solid rgba(255,255,255,0.1); padding-top:14px;">
-      <label>Oppure carica partita esistente</label>
-      <input type="text" id="load-game-id" placeholder="Game ID da caricare" style="margin-bottom:8px;">
-      <input type="text" id="player-nickname" placeholder="Il tuo nickname (es. Mario, Giulia...)" value="" style="margin-bottom:8px;">
-      <div style="margin-bottom:8px;">
-        <label style="display:block; margin-bottom:4px;">Scegli il tuo colore:</label>
-        <input type="color" id="player-color" value="#3498db">
-      </div>
-      <button class="btn btn-sm" style="width:100%;" onclick="loadExistingGame()">Unisciti alla partita</button>
-      <div id="auto-assign-notice" style="font-size:0.8rem; color:#aaa; margin-top:8px; text-align:center;">
-        Inserisci Game ID, nickname e colore per unirti
-      </div>
-    </div>
-
-    <div class="status-msg" id="status-msg"></div>
+    <div class="st" id="st-home"></div>
   </div>
 </div>
 
-<!-- ========== GAME SCREEN ========== -->
+<!-- ═══ SCREEN 2: LOBBY (il creatore aspetta) ═══ -->
+<div class="screen" id="sc-lobby">
+  <div class="box">
+    <h1>&#x1F986; Sala d'attesa</h1>
+    <p class="sub">Condividi questo link con gli altri — clicca per copiarlo:</p>
+    <div class="lobby-url" id="lobby-url" onclick="copyLink()">&#x1F517; caricamento…</div>
+    <div class="player-list" id="lobby-players"></div>
+    <button class="btn btn-green" id="btn-start" onclick="startGame()" disabled>&#x25B6; Inizia Partita</button>
+    <p class="sub" id="lobby-hint" style="margin-top:6px">Aspetta almeno un altro giocatore…</p>
+    <div class="st" id="st-lobby"></div>
+  </div>
+</div>
+
+<!-- ═══ SCREEN 3: ATTESA JOINER ═══ -->
+<div class="screen" id="sc-wait">
+  <div class="box">
+    <h1>&#x1F986; In attesa…</h1>
+    <p class="sub">Sei entrato! Aspetta che il Giocatore 1 avvii la partita.</p>
+    <div class="player-list" id="wait-players"></div>
+    <div class="st ok" id="st-wait">Sincronizzazione in corso…</div>
+  </div>
+</div>
+
+<!-- ═══ GAME ═══ -->
 <div id="game-screen">
   <div class="game-header">
     <div class="game-title">&#x1F986; Gioco dell'Oca</div>
-    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
-      <div id="my-player-indicator" style="font-size:0.85rem; color:#f5af19; font-weight:600;"></div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <button class="btn btn-sm" onclick="copyGameId()">Copia Game ID</button>
-        <button class="btn btn-sm" onclick="shareLink()">Condividi Link</button>
-        <button class="btn btn-sm" onclick="location.reload()">Nuova partita</button>
-      </div>
+    <div class="hbtns">
+      <button class="btn-sm" onclick="copyLink()">&#x1F517; Condividi</button>
+      <button class="btn-sm" onclick="copyId()">Copia Game ID</button>
+      <button class="btn-sm" onclick="location.reload()">Nuova partita</button>
     </div>
   </div>
-
-  <div class="game-layout">
-    <div class="board-container">
-      <div class="board" id="board"></div>
-    </div>
-
+  <div class="layout">
+    <div class="board-wrap"><div class="board" id="board"></div></div>
     <div class="sidebar">
-      <div class="panel current-turn">
-        <div class="turn-player" id="turn-player">&mdash;</div>
-        <div class="dice-area">
-          <div class="dice" id="dice">?</div>
-          <button class="btn-roll" id="btn-roll" onclick="rollDice()">Tira il dado</button>
-        </div>
+      <div class="panel turn-panel">
+        <div id="turn-badge"></div>
+        <div class="turn-name" id="turn-name">&#x2014;</div>
+        <div class="dice" id="dice">?</div>
+        <button class="btn-roll" id="btn-roll" onclick="rollDice()">&#x1F3B2; Tira il dado</button>
       </div>
-
-      <div class="panel">
-        <h3>Classifica</h3>
-        <div class="scoreboard" id="scoreboard"></div>
-      </div>
-
-      <div class="panel">
-        <h3>Log</h3>
-        <div class="log-box" id="log-box"></div>
-      </div>
+      <div class="panel"><h3>Giocatori</h3><div class="scores" id="scores"></div></div>
+      <div class="panel"><h3>Log</h3><div class="log-box" id="log-box"></div></div>
     </div>
   </div>
 </div>
 
-<!-- ========== WINNER OVERLAY ========== -->
-<div class="winner-overlay" id="winner-overlay">
-  <div class="winner-text" id="winner-text">&#x1F3C6;</div>
-  <div class="winner-sub" id="winner-sub"></div>
-  <button class="btn btn-primary" style="max-width:240px;" onclick="location.reload()">Nuova partita</button>
+<!-- Winner -->
+<div class="winner-ov" id="winner-ov">
+  <div class="wtext" id="wtext">&#x1F3C6;</div>
+  <div style="font-size:1.1rem;color:#ccc" id="wsub"></div>
+  <button class="btn btn-orange" style="max-width:220px" onclick="location.reload()">Nuova partita</button>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════
-// UTILITY FUNCTIONS
-// ═══════════════════════════════════════
-function generateSessionId() {
-  return 'session_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
-}
-const TOTAL_CELLS = 30;
+// ══════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════
+const CELLS  = 30;
+const APIURL = window.location.origin;
+const COLORS = ['#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6','#1abc9c'];
 
-// Auto-detect: l'URL del server e' lo stesso da cui viene servita la pagina
-const API_URL = window.location.origin;
-
-const SPECIAL_CELLS = {
-  5:  { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
-  6:  { type: 'bridge', icon: '\u{1F309}', label: 'Ponte',     action: 'jump', target: 12 },
-  9:  { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
-  14: { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
-  15: { type: 'well',   icon: '\u{1F573}\uFE0F', label: 'Pozzo', action: 'well' },
-  18: { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
-  21: { type: 'maze',   icon: '\u{1F300}', label: 'Labirinto', action: 'jump', target: 15 },
-  23: { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
-  25: { type: 'prison', icon: '\u{1F512}', label: 'Prigione',  action: 'prison', turns: 3 },
-  27: { type: 'goose',  icon: '\u{1F986}', label: 'Oca',       action: 'goose' },
-  28: { type: 'death',  icon: '\u{1F480}', label: 'Morte',     action: 'death' },
+const SPECIAL = {
+  5:  {type:'goose', icon:'\u{1F986}', label:'Oca',       action:'goose'},
+  6:  {type:'bridge',icon:'\u{1F309}', label:'Ponte',     action:'jump', to:12},
+  9:  {type:'goose', icon:'\u{1F986}', label:'Oca',       action:'goose'},
+  14: {type:'goose', icon:'\u{1F986}', label:'Oca',       action:'goose'},
+  15: {type:'well',  icon:'\u{1F573}\uFE0F', label:'Pozzo', action:'well'},
+  18: {type:'goose', icon:'\u{1F986}', label:'Oca',       action:'goose'},
+  21: {type:'maze',  icon:'\u{1F300}', label:'Labirinto', action:'jump', to:15},
+  23: {type:'goose', icon:'\u{1F986}', label:'Oca',       action:'goose'},
+  25: {type:'prison',icon:'\u{1F512}', label:'Prigione',  action:'prison', turns:3},
+  27: {type:'goose', icon:'\u{1F986}', label:'Oca',       action:'goose'},
+  28: {type:'death', icon:'\u{1F480}', label:'Morte',     action:'death'},
 };
 
-const defaultColors = ['#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6','#1abc9c'];
-
-// ═══════════════════════════════════════
-// STATE (usa API key fissa TIGG_Games_New)
-// ═══════════════════════════════════════
-let state = {
-  apiKey: '1b9a3889-c773-4f10-8376-7ac89d83d68c9f35b014bd914285a98cd00bc5b39f5a', // TIGG_Games_New API key
-  gameId: '',
-  players: [],
-  currentIndex: 0,
-  log: [],
-  gameOver: false,
-  winner: null,
-  myPlayerIndex: null, // Nuovo: indice del giocatore controllato da questo PC
-  sessionId: null, // Nuovo: ID univoco per questa sessione
+// ══════════════════════════════════════
+// STATO
+// ══════════════════════════════════════
+const G = {
+  apiKey:  '',   // API key del creatore, condivisa via URL hash
+  gameId:  '',
+  myId:    '',   // player ID di QUESTO dispositivo
+  players: [],   // [{id, name, color, pos, skip, well}]
+  turn:    0,    // indice giocatore di turno
+  log:     [],
+  over:    false,
+  winner:  null,
+  ver:     -1,   // versione log per sync incrementale
 };
 
-let syncInterval = null;
-let lastLogLength = 0;
+let pollTimer = null;
 
-// ═══════════════════════════════════════
-// AUTO-REGISTER (rimosso - ora usa API key fissa TIGG_Games)
-// ═══════════════════════════════════════
-
-// ═══════════════════════════════════════
-// API HELPER (usa API key fissa TIGG_Games_New)
-// ═══════════════════════════════════════
-async function api(method, path, body) {
-  const opts = {
+// ══════════════════════════════════════
+// HTTP
+// ══════════════════════════════════════
+async function req(method, path, body) {
+  const r = await fetch(APIURL + path, {
     method,
-    headers: {
-      'Content-Type': 'application/json',
-      'X-API-Key': state.apiKey,
-    },
-  };
-  if (body) opts.body = JSON.stringify(body);
-  const res = await fetch(API_URL + path, opts);
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || 'Errore API ' + res.status);
-  return data;
+    headers: {'Content-Type':'application/json', 'X-API-Key': G.apiKey},
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.error || 'HTTP ' + r.status);
+  return d;
 }
 
-// ═══════════════════════════════════════
-// SETUP
-// ═══════════════════════════════════════
-function setStatus(msg, type) {
-  const el = document.getElementById('status-msg');
-  el.textContent = msg;
-  el.className = 'status-msg' + (type === 'ok' ? ' ok' : type === 'err' ? ' err' : '');
+async function register() {
+  const r = await fetch(APIURL + '/auth/register', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({username: 'oca_' + Math.random().toString(36).slice(2,10)}),
+  });
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.error || 'Registrazione fallita');
+  return d.user.apiKey;
 }
 
-function addPlayerInput() {
-  const container = document.getElementById('player-inputs');
-  const idx = container.children.length;
-  if (idx >= 6) return toast('Massimo 6 giocatori');
-  const row = document.createElement('div');
-  row.className = 'player-row';
-  row.innerHTML = '<input type="text" placeholder="Nome giocatore ' + (idx+1) + '" value="Giocatore ' + (idx+1) + '">' +
-    '<input type="color" class="player-color" value="' + defaultColors[idx % defaultColors.length] + '">';
-  container.appendChild(row);
-}
+// ══════════════════════════════════════
+// CREA PARTITA (Giocatore 1)
+// ══════════════════════════════════════
+async function createGame() {
+  const name = document.getElementById('h-name').value.trim();
+  const max  = parseInt(document.getElementById('h-max').value);
+  if (!name) return setSt('home', 'Inserisci il tuo nome', 'err');
 
-function removePlayerInput() {
-  const container = document.getElementById('player-inputs');
-  if (container.children.length <= 1) return toast('Serve almeno 1 giocatore');
-  container.removeChild(container.lastChild);
-}
-
-async function startGame() {
-  const btn = document.getElementById('btn-start');
-  btn.disabled = true;
-  setStatus('Connessione al server...', '');
+  setSt('home', 'Connessione...', '');
 
   try {
-    // Usa l'API key fissa TIGG_Games
-    setStatus('Creo la partita...', 'ok');
+    // 1. Registrazione automatica — invisibile all'utente
+    G.apiKey = await register();
 
-    const gameName = document.getElementById('game-name').value.trim() || "Gioco dell'Oca";
-    const rows = document.querySelectorAll('#player-inputs .player-row');
-    const playerNames = [];
-    const playerColors = [];
+    // 2. Crea il gioco
+    const gr = await req('POST', '/games', {name: "Gioco dell'Oca"});
+    G.gameId = gr.game.id;
 
-    rows.forEach(function(row) {
-      const name = row.querySelector('input[type=text]').value.trim();
-      const color = row.querySelector('input[type=color]').value;
-      if (name) { playerNames.push(name); playerColors.push(color); }
+    // 3. Aggiungiti come Giocatore 1
+    const pr = await req('POST', '/games/' + G.gameId + '/players', {name});
+    G.myId = pr.player.id;
+    G.players = [{id: pr.player.id, name, color: COLORS[0], pos:0, skip:0, well:false}];
+
+    // 4. Salva configurazione (maxPlayers)
+    await req('POST', '/games/' + G.gameId + '/moves', {
+      playerId: G.myId,
+      data: {type:'config', maxPlayers: max},
     });
 
-    if (playerNames.length < 1) { btn.disabled = false; return toast('Servono almeno 1 giocatore', true); }
+    // 5. Salva localmente e vai alla lobby
+    saveLocal();
+    updateHash();
+    showScreen('sc-lobby');
+    renderLobby();
+    startPoll('lobby');
 
-    // 1. Crea il gioco via API
-    const gameRes = await api('POST', '/games', { name: gameName });
-    state.gameId = gameRes.game.id;
-
-    // 2. Assegna automaticamente il primo giocatore (Giocatore 1) al creatore
-    state.myPlayerIndex = 0;
-    state.sessionId = generateSessionId();
-
-    // 3. Aggiungi il creatore come primo giocatore via API
-    state.players = [];
-    const pRes = await api('POST', '/games/' + state.gameId + '/players', { name: playerNames[0] });
-    state.players.push({
-      id: pRes.player.id,
-      name: playerNames[0],
-      color: playerColors[0],
-      position: 0,
-      skippedTurns: 0,
-      inWell: false,
-    });
-
-    state.currentIndex = 0;
-    state.log = [];
-    state.gameOver = false;
-    state.winner = null;
-
-    addLog('Partita creata! In attesa di altri giocatori...');
-    showGameScreen();
-  } catch (e) {
-    btn.disabled = false;
-    setStatus('Errore: ' + e.message, 'err');
-    toast('Errore: ' + e.message, true);
+  } catch(e) {
+    setSt('home', 'Errore: ' + e.message, 'err');
   }
 }
 
-async function loadExistingGame() {
-  const gameId = document.getElementById('load-game-id').value.trim();
-  const playerNickname = document.getElementById('player-nickname').value.trim();
-  const playerColor = document.getElementById('player-color').value;
-  
-  if (!gameId) return toast('Inserisci il Game ID', true);
-  if (!playerNickname) return toast('Inserisci il tuo nickname', true);
+// ══════════════════════════════════════
+// UNISCITI (Giocatore 2-4)
+// ══════════════════════════════════════
+async function joinGame() {
+  const name   = document.getElementById('j-name').value.trim();
+  let   gameId = document.getElementById('j-id').value.trim();
+  if (!gameId) { const h = hashParams(); gameId = h.g || ''; }
+
+  if (!name)   return setSt('home', 'Inserisci il tuo nome', 'err');
+  if (!gameId) return setSt('home', 'Inserisci il Game ID', 'err');
+
+  setSt('home', 'Connessione...', '');
 
   try {
-    // Usa l'API key fissa TIGG_Games
-    const gameRes = await api('GET', '/games/' + gameId);
-    state.gameId = gameId;
+    const h = hashParams();
+    // Usa la stessa API key del creatore (dall'URL hash) — così tutti possono postare mosse
+    G.apiKey = h.k || await register();
+    G.gameId = gameId;
 
-    const playersRes = await api('GET', '/games/' + gameId + '/players');
-    const movesRes = await api('GET', '/games/' + gameId + '/moves');
-
-    const stateMoves = movesRes.moves.filter(function(m) { return m.data && m.data.type === 'state'; });
-    const lastState = stateMoves.length > 0 ? stateMoves[stateMoves.length - 1].data : null;
-
-    state.players = playersRes.players.map(function(p, i) {
-      return {
-        id: p.id,
-        name: p.name,
-        color: defaultColors[i % defaultColors.length],
-        position: lastState ? (lastState.positions[p.id] || 0) : 0,
-        skippedTurns: lastState ? (lastState.skippedTurns[p.id] || 0) : 0,
-        inWell: false,
-      };
-    });
-
-    // Assegna automaticamente il prossimo giocatore disponibile (basato sul numero di giocatori esistenti)
-    const nextPlayerIndex = state.players.length;
-    if (nextPlayerIndex >= 4) {
-      throw new Error('Il gioco è già pieno! Massimo 4 giocatori.');
+    // Controlla maxPlayers
+    const {maxPlayers, playerCount} = await getConfig();
+    if (playerCount >= maxPlayers) {
+      return setSt('home', 'Partita piena! (' + playerCount + '/' + maxPlayers + ')', 'err');
     }
-    
-    state.myPlayerIndex = nextPlayerIndex;
-    state.sessionId = generateSessionId();
 
-    // Aggiungi il nuovo giocatore al gioco
-    const pRes = await api('POST', '/games/' + gameId + '/players', { name: playerNickname });
-    state.players.push({
-      id: pRes.player.id,
-      name: playerNickname,
-      color: playerColor,
-      position: 0,
-      skippedTurns: 0,
-      inWell: false,
-    });
-    
-    // NON salvare lo stato per evitare di sovrascrivere currentIndex
-    // await saveStateToApi(0, 'Si è unito ' + playerNickname);
-    
-    // Aggiungi al log locale
-    addLog('Si è unito ' + playerNickname + '!');
-    
-    toast(`Ti sei unito come ${playerNickname}!`);
+    // Aggiungiti al gioco
+    const pr = await req('POST', '/games/' + G.gameId + '/players', {name});
+    G.myId = pr.player.id;
 
-    state.currentIndex = lastState ? (lastState.currentPlayerIndex || 0) : 0;
-    state.gameOver = lastState ? (lastState.gameOver || false) : false;
-    state.winner = lastState ? lastState.winner : null;
-    state.log = lastState && lastState.log ? lastState.log.map(function(l) { return l.text; }) : [];
+    // Carica tutti i giocatori
+    await syncPlayers();
 
-    showGameScreen();
-  } catch (e) {
-    setStatus('Errore: ' + e.message, 'err');
-    toast('Errore: ' + e.message, true);
+    saveLocal();
+    updateHash();
+    showScreen('sc-wait');
+    renderWait();
+    startPoll('wait');
+
+  } catch(e) {
+    setSt('home', 'Errore: ' + e.message, 'err');
   }
 }
 
-// ═══════════════════════════════════════
-// RENDERING
-// ═══════════════════════════════════════
+async function getConfig() {
+  const mr = await req('GET', '/games/' + G.gameId + '/moves');
+  const cfg = mr.moves.find(m => m.data && m.data.type === 'config');
+  const pr  = await req('GET', '/games/' + G.gameId + '/players');
+  return {
+    maxPlayers: cfg ? cfg.data.maxPlayers : 4,
+    playerCount: pr.players.length,
+  };
+}
+
+// ══════════════════════════════════════
+// AVVIA PARTITA (solo il creatore)
+// ══════════════════════════════════════
+async function startGame() {
+  try {
+    await req('POST', '/games/' + G.gameId + '/moves', {
+      playerId: G.myId,
+      data: {type:'start'},
+    });
+    G.turn=0; G.log=[]; G.over=false; G.winner=null; G.ver=0;
+    G.log.push('Partita avviata! ' + G.players.map(p=>p.name).join(' vs '));
+    showGameScreen();
+  } catch(e) {
+    setSt('lobby', 'Errore: ' + e.message, 'err');
+  }
+}
+
+// ══════════════════════════════════════
+// SYNC GIOCATORI (aggiorna lista)
+// ══════════════════════════════════════
+async function syncPlayers() {
+  const pr = await req('GET', '/games/' + G.gameId + '/players');
+  const existing = {};
+  G.players.forEach(p => existing[p.id] = p);
+
+  G.players = pr.players.map((p, i) => {
+    if (existing[p.id]) return {...existing[p.id], name: p.name};
+    return {id:p.id, name:p.name, color:COLORS[i % COLORS.length], pos:0, skip:0, well:false};
+  });
+}
+
+// ══════════════════════════════════════
+// POLLING
+// ══════════════════════════════════════
+function startPoll(phase) {
+  if (pollTimer) clearInterval(pollTimer);
+  pollTimer = setInterval(() => poll(phase), 1000);
+}
+
+async function poll(phase) {
+  try {
+    if (phase === 'lobby') {
+      await syncPlayers();
+      renderLobby();
+
+    } else if (phase === 'wait') {
+      await syncPlayers();
+      renderWait();
+      // Controlla se il creatore ha avviato
+      if (await checkStarted()) {
+        clearInterval(pollTimer);
+        await loadGameState();
+        showGameScreen();
+      }
+
+    } else if (phase === 'game') {
+      await syncGame();
+    }
+  } catch(_) { /* ignora errori di rete temporanei */ }
+}
+
+async function checkStarted() {
+  const mr = await req('GET', '/games/' + G.gameId + '/moves');
+  return mr.moves.some(m => m.data && m.data.type === 'start');
+}
+
+async function loadGameState() {
+  const mr  = await req('GET', '/games/' + G.gameId + '/moves');
+  const sts = mr.moves.filter(m => m.data && m.data.type === 'state');
+  if (!sts.length) { G.turn=0; G.log=[]; G.over=false; G.ver=0; return; }
+  applyState(sts[sts.length-1].data);
+}
+
+async function syncGame() {
+  if (G.over) { clearInterval(pollTimer); return; }
+  const mr  = await req('GET', '/games/' + G.gameId + '/moves');
+  const sts = mr.moves.filter(m => m.data && m.data.type === 'state');
+  if (!sts.length) return;
+  const last = sts[sts.length-1].data;
+  if (last.version === G.ver) return; // niente di nuovo
+  applyState(last);
+  render();
+  if (G.over) { clearInterval(pollTimer); showWinner(); }
+}
+
+function applyState(s) {
+  G.turn   = s.currentPlayerIndex || 0;
+  G.over   = !!s.gameOver;
+  G.winner = s.winner || null;
+  G.ver    = s.version || 0;
+  G.log    = s.log ? s.log.map(l => l.text) : G.log;
+  G.players.forEach(p => {
+    if (s.positions    && s.positions[p.id]    !== undefined) p.pos  = s.positions[p.id];
+    if (s.skippedTurns && s.skippedTurns[p.id] !== undefined) p.skip = s.skippedTurns[p.id];
+  });
+}
+
+// ══════════════════════════════════════
+// RENDER LOBBY & WAIT
+// ══════════════════════════════════════
+function renderLobby() {
+  const ul = document.getElementById('lobby-players');
+  ul.innerHTML = '';
+  G.players.forEach((p, i) => {
+    const div = document.createElement('div');
+    div.className = 'player-item';
+    div.innerHTML =
+      '<div class="pdot" style="background:'+p.color+'"></div>' +
+      '<div class="pinfo">' +
+        '<div class="pname">Giocatore '+(i+1)+' — '+p.name+'</div>' +
+        '<div class="ptag'+(p.id===G.myId?' you':'')+'">'+
+          (p.id===G.myId ? '&#x1F451; Tu (creatore)' : '&#x2705; Entrato') +
+        '</div>' +
+      '</div>';
+    ul.appendChild(div);
+  });
+
+  const can = G.players.length >= 2;
+  document.getElementById('btn-start').disabled = !can;
+  document.getElementById('lobby-hint').textContent = can
+    ? G.players.length + ' giocatori pronti — puoi iniziare!'
+    : 'Aspetta almeno un altro giocatore… (' + G.players.length + ' presenti)';
+
+  document.getElementById('lobby-url').textContent = '&#x1F517; ' + buildShareUrl();
+}
+
+function renderWait() {
+  const ul = document.getElementById('wait-players');
+  ul.innerHTML = '';
+  G.players.forEach((p, i) => {
+    const div = document.createElement('div');
+    div.className = 'player-item';
+    div.innerHTML =
+      '<div class="pdot" style="background:'+p.color+'"></div>' +
+      '<div class="pinfo">' +
+        '<div class="pname">Giocatore '+(i+1)+' — '+p.name+'</div>' +
+        '<div class="ptag'+(p.id===G.myId?' you':'')+'">'+
+          (p.id===G.myId ? '&#x2705; Sei tu' : 'In attesa') +
+        '</div>' +
+      '</div>';
+    ul.appendChild(div);
+  });
+}
+
+// ══════════════════════════════════════
+// SHOW GAME SCREEN
+// ══════════════════════════════════════
 function showGameScreen() {
-  document.getElementById('setup-screen').style.display = 'none';
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
   document.getElementById('game-screen').style.display = 'block';
   buildBoard();
-  renderAll();
-  
-  // Avvia il polling per sincronizzare la partita in tempo reale
-  if (syncInterval) clearInterval(syncInterval);
-  syncInterval = setInterval(syncGameState, 500); // Aggiorna ogni 500ms invece di 1000ms
+  render();
+  startPoll('game');
 }
 
-async function syncGameState() {
-  try {
-    // Prima ottieni la lista aggiornata dei giocatori
-    const playersRes = await api('GET', '/games/' + state.gameId + '/players');
-    
-    const movesRes = await api('GET', '/games/' + state.gameId + '/moves');
-    const stateMoves = movesRes.moves.filter(function(m) { return m.data && m.data.type === 'state'; });
-    const lastState = stateMoves.length > 0 ? stateMoves[stateMoves.length - 1].data : null;
-
-    // Aggiorna sempre la lista dei giocatori
-    let stateChanged = false;
-    if (playersRes.players.length !== state.players.length) {
-      state.players = playersRes.players.map(function(p, i) {
-        // Mantieni il myPlayerIndex se il giocatore è quello controllato da questo client
-        const existingPlayer = state.players.find(function(ep) { return ep.id === p.id; });
-        return {
-          id: p.id,
-          name: p.name,
-          color: existingPlayer ? existingPlayer.color : defaultColors[i % defaultColors.length],
-          position: lastState ? (lastState.positions ? (lastState.positions[p.id] || 0) : 0) : (existingPlayer ? existingPlayer.position : 0),
-          skippedTurns: lastState ? (lastState.skippedTurns ? (lastState.skippedTurns[p.id] || 0) : 0) : (existingPlayer ? existingPlayer.skippedTurns : 0),
-          inWell: existingPlayer ? existingPlayer.inWell : false,
-        };
-      });
-      stateChanged = true;
-    }
-
-    if (!lastState) {
-      if (stateChanged) renderAll();
-      return;
-    }
-
-    // Aggiorna lo stato se è cambiato
-    let stateChanged = false;
-
-    // Aggiorna la lista dei giocatori se è cambiata
-    if (playersRes.players.length !== state.players.length) {
-      state.players = playersRes.players.map(function(p, i) {
-        // Mantieni il myPlayerIndex se il giocatore è quello controllato da questo client
-        const existingPlayer = state.players.find(function(ep) { return ep.id === p.id; });
-        return {
-          id: p.id,
-          name: p.name,
-          color: existingPlayer ? existingPlayer.color : defaultColors[i % defaultColors.length],
-          position: lastState.positions ? (lastState.positions[p.id] || 0) : (existingPlayer ? existingPlayer.position : 0),
-          skippedTurns: lastState.skippedTurns ? (lastState.skippedTurns[p.id] || 0) : (existingPlayer ? existingPlayer.skippedTurns : 0),
-          inWell: existingPlayer ? existingPlayer.inWell : false,
-        };
-      });
-      stateChanged = true;
-    }
-
-    // Verifica se ci sono nuovi log
-    if (lastState.log && lastState.log.length > state.log.length) {
-      state.log = lastState.log.map(function(l) { return l.text; });
-      stateChanged = true;
-    }
-
-    // Aggiorna le posizioni dei giocatori
-    if (lastState.positions) {
-      state.players.forEach(function(p) {
-        if (lastState.positions[p.id] !== undefined && lastState.positions[p.id] !== p.position) {
-          p.position = lastState.positions[p.id];
-          stateChanged = true;
-        }
-      });
-    }
-
-    // Aggiorna i turni saltati
-    if (lastState.skippedTurns) {
-      state.players.forEach(function(p) {
-        if (lastState.skippedTurns[p.id] !== undefined && lastState.skippedTurns[p.id] !== p.skippedTurns) {
-          p.skippedTurns = lastState.skippedTurns[p.id];
-          stateChanged = true;
-        }
-      });
-    }
-
-    // Aggiorna il turno attuale
-    if (lastState.currentPlayerIndex !== undefined && lastState.currentPlayerIndex !== state.currentIndex) {
-      state.currentIndex = lastState.currentPlayerIndex;
-      stateChanged = true;
-    }
-
-    // Aggiorna lo stato della partita
-    if (lastState.gameOver !== undefined && lastState.gameOver !== state.gameOver) {
-      state.gameOver = lastState.gameOver;
-      stateChanged = true;
-    }
-
-    if (lastState.winner !== undefined && lastState.winner !== state.winner) {
-      state.winner = lastState.winner;
-      stateChanged = true;
-    }
-
-    if (stateChanged) {
-      renderAll();
-
-      // Se è finita la partita, mostra il vincitore
-      if (state.gameOver && state.winner) {
-        const winner = state.players.find(function(p) { return p.name === state.winner; });
-        if (winner) showWinner(winner);
-      }
-    }
-  } catch (e) {
-    console.error('Errore sincronizzazione:', e);
-  }
-}
-
+// ══════════════════════════════════════
+// BOARD
+// ══════════════════════════════════════
 function buildBoard() {
-  var board = document.getElementById('board');
+  const board = document.getElementById('board');
   board.innerHTML = '';
-
-  var cols = 6;
-  var rows = Math.ceil((TOTAL_CELLS + 1) / cols);
-  var cellMap = [];
-
-  for (var r = 0; r < rows; r++) {
-    for (var c = 0; c < cols; c++) {
-      var actualC = r % 2 === 1 ? (cols - 1 - c) : c;
-      var cellNum = r * cols + actualC;
-      cellMap.push(cellNum <= TOTAL_CELLS ? cellNum : null);
-    }
-  }
-
-  cellMap.forEach(function(cellNum) {
-    var div = document.createElement('div');
-
-    if (cellNum === null) {
-      div.className = 'cell';
-      div.style.visibility = 'hidden';
-      board.appendChild(div);
-      return;
-    }
-
-    var special = SPECIAL_CELLS[cellNum];
-    var cls = 'cell';
-
-    if (cellNum === 0) cls += ' cell-start';
-    else if (cellNum === TOTAL_CELLS) cls += ' cell-finish';
-    else if (special) cls += ' cell-' + special.type;
-
-    div.className = cls;
-    div.id = 'cell-' + cellNum;
-
-    var inner = '<span class="cell-num">' + cellNum + '</span>';
-
-    if (cellNum === 0) {
-      inner += '<span class="cell-icon">\u{1F3C1}</span><span class="cell-label">Partenza</span>';
-    } else if (cellNum === TOTAL_CELLS) {
-      inner += '<span class="cell-icon">\u{1F3C6}</span><span class="cell-label">Arrivo</span>';
-    } else if (special) {
-      inner += '<span class="cell-icon">' + special.icon + '</span><span class="cell-label">' + special.label + '</span>';
-    } else {
-      inner += '<span class="cell-icon" style="font-size:1rem; color:#555;">' + cellNum + '</span>';
-    }
-
-    inner += '<div class="players-in-cell"></div>';
-    div.innerHTML = inner;
-    board.appendChild(div);
-  });
-}
-
-function renderAll() { 
-  renderTokens(); 
-  renderScoreboard(); 
-  renderLog(); 
-  renderTurn(); 
-  renderMyPlayerIndicator();
-}
-
-function renderTokens() {
-  document.querySelectorAll('.players-in-cell').forEach(function(el) { el.innerHTML = ''; });
-  state.players.forEach(function(p) {
-    var cell = document.getElementById('cell-' + p.position);
-    if (!cell) return;
-    var container = cell.querySelector('.players-in-cell');
-    var token = document.createElement('div');
-    token.className = 'player-token';
-    token.style.background = p.color;
-    token.title = p.name;
-    container.appendChild(token);
-  });
-}
-
-function renderScoreboard() {
-  var sb = document.getElementById('scoreboard');
-  sb.innerHTML = '';
-  state.players.forEach(function(p, i) {
-    var active = i === state.currentIndex && !state.gameOver;
-    var row = document.createElement('div');
-    row.className = 'score-row' + (active ? ' active' : '');
-    row.innerHTML = '<div class="score-dot" style="background:' + p.color + ';"></div>' +
-      '<div class="score-name">' + p.name + '</div>' +
-      '<div class="score-pos">' + p.position + '/' + TOTAL_CELLS +
-      (p.skippedTurns > 0 ? ' \u23F8\uFE0F' + p.skippedTurns : '') +
-      (p.inWell ? ' \u{1F573}\uFE0F' : '') + '</div>';
-    sb.appendChild(row);
-  });
-}
-
-function renderLog() {
-  var box = document.getElementById('log-box');
-  box.innerHTML = '';
-  var reversed = state.log.slice().reverse();
-  reversed.forEach(function(text) {
-    var entry = document.createElement('div');
-    entry.className = 'log-entry';
-    entry.textContent = text;
-    box.appendChild(entry);
-  });
-}
-
-function renderTurn() {
-  var player = state.players[state.currentIndex];
-  var el = document.getElementById('turn-player');
-  var btn = document.getElementById('btn-roll');
-  
-  if (state.gameOver) {
-    el.textContent = 'Partita finita!';
-    btn.disabled = true;
-    btn.textContent = 'Partita finita';
-  } else if (state.players.length < 2) {
-    el.textContent = 'In attesa di giocatori...';
-    btn.disabled = true;
-    btn.textContent = 'Aspetta giocatori';
-  } else {
-    el.innerHTML = '<span style="color:' + player.color + ';">' + player.name + '</span>';
-    
-    // Abilita il bottone solo se è il turno del giocatore controllato da questo PC
-    if (state.myPlayerIndex !== null && state.currentIndex === state.myPlayerIndex) {
-      btn.disabled = false;
-      btn.textContent = 'Tira il dado';
-    } else {
-      btn.disabled = true;
-      btn.textContent = 'Aspetta il tuo turno';
+  const cols = 6, rows = Math.ceil((CELLS+1)/cols);
+  for (let r=0; r<rows; r++) {
+    for (let c=0; c<cols; c++) {
+      const ac = r%2===1 ? (cols-1-c) : c;
+      const n  = r*cols+ac;
+      const div = document.createElement('div');
+      if (n>CELLS) { div.className='cell'; div.style.visibility='hidden'; board.appendChild(div); continue; }
+      const sp = SPECIAL[n];
+      let cls = 'cell';
+      if      (n===0)     cls += ' c-start';
+      else if (n===CELLS) cls += ' c-finish';
+      else if (sp)        cls += ' c-'+sp.type;
+      div.className=cls; div.id='c'+n;
+      let html='<span class="cn">'+n+'</span>';
+      if      (n===0)     html+='<span class="ci">&#x1F3C1;</span><span class="cl">Partenza</span>';
+      else if (n===CELLS) html+='<span class="ci">&#x1F3C6;</span><span class="cl">Arrivo</span>';
+      else if (sp)        html+='<span class="ci">'+sp.icon+'</span><span class="cl">'+sp.label+'</span>';
+      else                html+='<span class="ci" style="font-size:0.88rem;color:#555">'+n+'</span>';
+      html+='<div class="pcw"></div>';
+      div.innerHTML=html; board.appendChild(div);
     }
   }
 }
 
-function addLog(text) { 
-  state.log.push(text); 
-  renderLog(); 
-}
+// ══════════════════════════════════════
+// RENDER GAME
+// ══════════════════════════════════════
+function render() {
+  // Tokens
+  document.querySelectorAll('.pcw').forEach(el => el.innerHTML='');
+  G.players.forEach(p => {
+    const cell=document.getElementById('c'+p.pos); if(!cell) return;
+    const t=document.createElement('div');
+    t.className='tok'; t.style.background=p.color; t.title=p.name;
+    cell.querySelector('.pcw').appendChild(t);
+  });
 
-function renderMyPlayerIndicator() {
-  const indicator = document.getElementById('my-player-indicator');
-  if (state.myPlayerIndex !== null && state.players[state.myPlayerIndex]) {
-    const player = state.players[state.myPlayerIndex];
-    indicator.textContent = `Controlli: ${player.name}`;
-    indicator.style.color = player.color;
-  } else {
-    indicator.textContent = '';
+  // Scores
+  const sb=document.getElementById('scores');
+  sb.innerHTML='';
+  G.players.forEach((p,i) => {
+    const div=document.createElement('div');
+    const isActive=i===G.turn && !G.over;
+    const isMe=p.id===G.myId;
+    div.className='sr'+(isActive?' active':'')+(isMe?' me':'');
+    div.innerHTML=
+      '<div class="sdot" style="background:'+p.color+'"></div>'+
+      '<div class="sname">'+p.name+(isMe?' <small style="color:#f5af19">(tu)</small>':'')+'</div>'+
+      '<div class="spos">'+p.pos+'/'+CELLS+(p.skip>0?' &#x23F8;'+p.skip:'')+(p.well?' &#x1F573;&#xFE0F;':'')+'</div>';
+    sb.appendChild(div);
+  });
+
+  // Log
+  const lb=document.getElementById('log-box');
+  lb.innerHTML='';
+  [...G.log].reverse().forEach(t => {
+    const e=document.createElement('div'); e.className='log-e'; e.textContent=t; lb.appendChild(e);
+  });
+
+  // Turn panel
+  const p    = G.players[G.turn];
+  const btn  = document.getElementById('btn-roll');
+  const tn   = document.getElementById('turn-name');
+  const badge= document.getElementById('turn-badge');
+
+  if (G.over || !p) {
+    tn.textContent='Partita finita!'; badge.innerHTML=''; btn.disabled=true; return;
   }
+
+  tn.innerHTML='<span style="color:'+p.color+'">'+p.name+'</span>';
+  const myTurn = p.id===G.myId;
+  btn.disabled = !myTurn;
+  badge.innerHTML = myTurn
+    ? '<span class="badge-turn badge-go">&#x1F3AF; Tocca a TE!</span>'
+    : '<span class="badge-turn badge-wait">&#x23F3; Turno di '+p.name+'…</span>';
 }
 
-// ═══════════════════════════════════════
-// GAME LOGIC
-// ═══════════════════════════════════════
+// ══════════════════════════════════════
+// TIRA DADO
+// ══════════════════════════════════════
 async function rollDice() {
-  if (state.gameOver) return;
-  
-  // Controlla che ci siano almeno 2 giocatori
-  if (state.players.length < 2) {
-    toast('Aspetta che si uniscano altri giocatori!', true);
-    return;
+  if (G.over) return;
+  const p=G.players[G.turn];
+  if (!p || p.id!==G.myId) return; // sicurezza: solo il tuo turno
+
+  const btn=document.getElementById('btn-roll');
+  btn.disabled=true;
+
+  // Prigione
+  if (p.skip>0) {
+    p.skip--;
+    addLog(p.name+' salta il turno ('+p.skip+' rimasti)');
+    await saveMove(0, p.name+' salta il turno');
+    nextTurn(); return;
   }
-  
-  // Controlla che sia il turno del giocatore controllato da questo PC
-  if (state.myPlayerIndex === null || state.currentIndex !== state.myPlayerIndex) {
-    toast('Non è il tuo turno!', true);
-    return;
-  }
-
-  var btn = document.getElementById('btn-roll');
-  btn.disabled = true;
-
-  var player = state.players[state.currentIndex];
-
-  if (player.skippedTurns > 0) {
-    player.skippedTurns--;
-    addLog(player.name + ' salta il turno (' + player.skippedTurns + ' rimanenti)');
-    await saveStateToApi(0, player.name + ' salta il turno');
-    nextTurn();
-    return;
+  // Pozzo
+  if (p.well) {
+    addLog(p.name+' \u00e8 nel Pozzo! Aspetta che qualcuno lo liberi.');
+    await saveMove(0, p.name+' bloccato nel Pozzo');
+    nextTurn(); return;
   }
 
-  if (player.inWell) {
-    addLog(player.name + " e' nel Pozzo! Aspetta che qualcuno lo liberi.");
-    await saveStateToApi(0, player.name + ' bloccato nel Pozzo');
-    nextTurn();
-    return;
-  }
+  // Dado
+  const dEl=document.getElementById('dice');
+  dEl.classList.add('spin');
+  const roll=Math.floor(Math.random()*6)+1;
+  await wait(600);
+  dEl.classList.remove('spin');
+  dEl.textContent=roll;
 
-  var diceEl = document.getElementById('dice');
-  diceEl.classList.add('rolling');
-  var roll = Math.floor(Math.random() * 6) + 1;
-
-  await new Promise(function(r) { setTimeout(r, 700); });
-  diceEl.classList.remove('rolling');
-  diceEl.textContent = roll;
-
-  var newPos = player.position + roll;
-  var actionText = '';
-
-  if (newPos > TOTAL_CELLS) {
-    newPos = TOTAL_CELLS - (newPos - TOTAL_CELLS);
-    actionText = player.name + ' tira ' + roll + ', rimbalza! Torna a casella ' + newPos;
+  // Posizione
+  let np=p.pos+roll, msg;
+  if (np>CELLS) {
+    np=CELLS-(np-CELLS);
+    msg=p.name+' tira '+roll+', rimbalza \u2192 Casella '+np;
   } else {
-    actionText = player.name + ' tira ' + roll + ' \u2192 Casella ' + newPos;
+    msg=p.name+' tira '+roll+' \u2192 Casella '+np;
+  }
+  addLog(msg); p.pos=np; renderToks();
+
+  await applySpecial(p,roll);
+
+  if (p.pos===CELLS) {
+    G.over=true; G.winner=p.name;
+    addLog('\u{1F3C6} '+p.name+' HA VINTO!');
+    await saveMove(roll, p.name+' HA VINTO!');
+    render(); showWinner(); return;
   }
 
-  addLog(actionText);
-  player.position = newPos;
-  renderTokens();
-
-  await handleSpecialCell(player, roll);
-
-  if (player.position === TOTAL_CELLS) {
-    state.gameOver = true;
-    state.winner = player.name;
-    addLog('\u{1F3C6} ' + player.name + ' HA VINTO!');
-    await saveStateToApi(roll, player.name + ' HA VINTO!');
-    renderAll();
-    showWinner(player);
-    return;
-  }
-
-  await saveStateToApi(roll, actionText);
+  await saveMove(roll, msg);
   nextTurn();
 }
 
-async function handleSpecialCell(player, roll) {
-  var cell = SPECIAL_CELLS[player.position];
-  if (!cell) return;
-
-  switch (cell.action) {
-    case 'goose':
-      var newPos = player.position + roll;
-      if (newPos > TOTAL_CELLS) newPos = TOTAL_CELLS - (newPos - TOTAL_CELLS);
-      addLog('\u{1F986} OCA! ' + player.name + ' avanza ancora di ' + roll + ' \u2192 Casella ' + newPos);
-      player.position = newPos;
-      renderTokens();
-      await handleSpecialCell(player, roll);
-      break;
+async function applySpecial(p, roll) {
+  const sp=SPECIAL[p.pos]; if(!sp) return;
+  switch(sp.action) {
+    case 'goose': {
+      let np=p.pos+roll; if(np>CELLS) np=CELLS-(np-CELLS);
+      addLog('\u{1F986} OCA! '+p.name+' avanza ancora di '+roll+' \u2192 Casella '+np);
+      p.pos=np; renderToks(); await applySpecial(p,roll); break;
+    }
     case 'jump':
-      addLog(cell.icon + ' ' + cell.label + '! ' + player.name + ' va alla casella ' + cell.target);
-      player.position = cell.target;
-      renderTokens();
-      break;
+      addLog(sp.icon+' '+sp.label+'! '+p.name+' va alla casella '+sp.to);
+      p.pos=sp.to; renderToks(); break;
     case 'well':
-      player.inWell = true;
-      addLog("\u{1F573}\uFE0F POZZO! " + player.name + " e' bloccato finche' qualcuno non lo libera!");
-      state.players.forEach(function(p) {
-        if (p.id !== player.id && p.inWell && p.position === player.position) {
-          p.inWell = false;
-          addLog(p.name + " e' stato liberato dal Pozzo!");
-        }
-      });
+      p.well=true;
+      addLog('\u{1F573}\uFE0F POZZO! '+p.name+' \u00e8 bloccato finch\u00e9 qualcuno non lo libera!');
+      G.players.forEach(o=>{if(o.id!==p.id&&o.well&&o.pos===p.pos){o.well=false;addLog(o.name+' liberato!');}});
       break;
     case 'prison':
-      player.skippedTurns = cell.turns;
-      addLog('\u{1F512} PRIGIONE! ' + player.name + ' salta ' + cell.turns + ' turni!');
-      break;
+      p.skip=sp.turns; addLog('\u{1F512} PRIGIONE! '+p.name+' salta '+sp.turns+' turni!'); break;
     case 'death':
-      player.position = 0;
-      addLog('\u{1F480} MORTE! ' + player.name + ' torna alla partenza!');
-      renderTokens();
-      break;
+      p.pos=0; addLog('\u{1F480} MORTE! '+p.name+' torna alla partenza!'); renderToks(); break;
   }
+}
+
+function renderToks() {
+  document.querySelectorAll('.pcw').forEach(el=>el.innerHTML='');
+  G.players.forEach(p=>{
+    const cell=document.getElementById('c'+p.pos); if(!cell) return;
+    const t=document.createElement('div'); t.className='tok'; t.style.background=p.color; t.title=p.name;
+    cell.querySelector('.pcw').appendChild(t);
+  });
 }
 
 function nextTurn() {
-  state.players.forEach(function(p) {
-    if (p.inWell) {
-      var others = state.players.filter(function(o) {
-        return o.id !== p.id && o.position === p.position && !o.inWell;
-      });
-      if (others.length > 0) {
-        p.inWell = false;
-        addLog(p.name + " e' stato liberato dal Pozzo da " + others[0].name + '!');
-      }
+  G.players.forEach(p=>{
+    if(p.well){
+      const oth=G.players.filter(o=>o.id!==p.id&&o.pos===p.pos&&!o.well);
+      if(oth.length){p.well=false; addLog(p.name+' liberato da '+oth[0].name+'!');}
     }
   });
-  state.currentIndex = (state.currentIndex + 1) % state.players.length;
-  renderAll();
+  G.turn=(G.turn+1)%G.players.length;
+  render();
 }
 
-async function saveStateToApi(lastRoll, lastAction) {
+function addLog(t) { G.log.push(t); }
+
+async function saveMove(roll, action) {
+  const pos={}, skp={};
+  G.players.forEach(p=>{pos[p.id]=p.pos; skp[p.id]=p.skip;});
   try {
-    var positions = {};
-    var skippedTurns = {};
-    var playerOrder = [];
-
-    state.players.forEach(function(p) {
-      positions[p.id] = p.position;
-      skippedTurns[p.id] = p.skippedTurns;
-      playerOrder.push(p.id);
-    });
-
-    await api('POST', '/games/' + state.gameId + '/moves', {
-      playerId: state.players[state.currentIndex].id,
-      data: {
-        type: 'state',
-        positions: positions,
-        playerOrder: playerOrder,
-        currentPlayerIndex: state.currentIndex,
-        skippedTurns: skippedTurns,
-        lastRoll: lastRoll,
-        lastAction: lastAction,
-        gameOver: state.gameOver,
-        winner: state.winner,
-        log: state.log.slice(-20).map(function(text) { return { text: text }; }),
-        version: state.log.length,
+    await req('POST','/games/'+G.gameId+'/moves',{
+      playerId: G.players[G.turn].id,
+      data:{
+        type:'state', positions:pos, skippedTurns:skp,
+        currentPlayerIndex: G.over ? G.turn : (G.turn+1) % G.players.length,
+        lastRoll:roll, lastAction:action,
+        gameOver:G.over, winner:G.winner,
+        log:G.log.slice(-30).map(t=>({text:t})),
+        version:G.log.length,
       }
     });
-  } catch (e) {
-    console.error('Errore salvataggio move:', e);
+    G.ver=G.log.length;
+  } catch(e){ console.warn('save failed',e.message); }
+}
+
+// ══════════════════════════════════════
+// WINNER
+// ══════════════════════════════════════
+function showWinner() {
+  document.getElementById('wtext').textContent='\u{1F3C6} '+G.winner+' ha vinto!';
+  document.getElementById('wsub').textContent='Complimenti! La partita \u00e8 terminata.';
+  document.getElementById('winner-ov').classList.add('on');
+}
+
+// ══════════════════════════════════════
+// UTILS
+// ══════════════════════════════════════
+function wait(ms) { return new Promise(r=>setTimeout(r,ms)); }
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.getElementById('game-screen').style.display='none';
+}
+
+function setSt(screen, msg, type) {
+  const el=document.getElementById('st-'+screen); if(!el) return;
+  el.textContent=msg;
+  el.className='st'+(type==='ok'?' ok':type==='err'?' err':'');
+}
+
+function toast(msg,err) {
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.className='toast on'+(err?' err':'');
+  setTimeout(()=>el.className='toast',3500);
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(buildShareUrl()).then(()=>toast('Link copiato! Mandalo agli altri \u{1F389}'));
+}
+function copyId() {
+  navigator.clipboard.writeText(G.gameId).then(()=>toast('Game ID: '+G.gameId));
+}
+function buildShareUrl() {
+  return window.location.origin+window.location.pathname+
+    '#k='+encodeURIComponent(G.apiKey)+'&g='+encodeURIComponent(G.gameId);
+}
+function updateHash() {
+  history.replaceState(null,'',buildShareUrl());
+}
+function hashParams() {
+  const o={};
+  window.location.hash.replace('#','').split('&').forEach(p=>{
+    const [k,v]=p.split('='); if(k&&v) o[k]=decodeURIComponent(v);
+  });
+  return o;
+}
+function saveLocal() {
+  try {
+    localStorage.setItem('oca_key_'+G.gameId, G.apiKey);
+    localStorage.setItem('oca_me_'+G.gameId,  G.myId);
+  } catch(_){}
+}
+
+// ══════════════════════════════════════
+// AUTO-FILL DA HASH URL
+// ══════════════════════════════════════
+window.addEventListener('DOMContentLoaded', () => {
+  const h=hashParams();
+  if (h.k && h.g) {
+    document.getElementById('j-id').value=h.g;
+    document.getElementById('j-name').focus();
+    setSt('home','Sei stato invitato! Inserisci il tuo nome e clicca "Unisciti".','ok');
   }
-}
-
-function showWinner(player) {
-  document.getElementById('winner-text').textContent = '\u{1F3C6} ' + player.name + ' ha vinto!';
-  document.getElementById('winner-sub').textContent = "Complimenti! La partita e' terminata.";
-  document.getElementById('winner-overlay').classList.add('show');
-}
-
-function copyGameId() {
-  navigator.clipboard.writeText(state.gameId).then(function() { toast('Game ID copiato: ' + state.gameId); });
-}
-
-function shareLink() {
-  var url = window.location.origin + '/gioco-oca';
-  navigator.clipboard.writeText(url).then(function() { toast('Link copiato! Condividilo con gli amici'); });
-}
-
-function toast(msg, isError) {
-  var el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className = 'toast show' + (isError ? ' error' : '');
-  setTimeout(function() { el.className = 'toast'; }, 3000);
-}
-
-// Inizializza la pagina quando si carica
-document.addEventListener('DOMContentLoaded', function() {
-  // Non serve più inizializzare niente
 });
 </script>
 </body>
