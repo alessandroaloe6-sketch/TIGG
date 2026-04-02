@@ -329,6 +329,11 @@ async function req(method, path, body) {
 }
 
 async function register() {
+  // Riusa la chiave già salvata in questo browser, se esiste
+  const saved = localStorage.getItem('oca_apikey');
+  if (saved) return saved;
+
+  // Prima volta: registra un nuovo utente e salva la chiave
   const r = await fetch(APIURL + '/auth/register', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -336,6 +341,7 @@ async function register() {
   });
   const d = await r.json();
   if (!r.ok) throw new Error(d.error || 'Registrazione fallita');
+  localStorage.setItem('oca_apikey', d.user.apiKey);
   return d.user.apiKey;
 }
 
@@ -504,6 +510,7 @@ async function loadGameState() {
   const sts = mr.moves.filter(m => m.data && m.data.type === 'state');
   if (!sts.length) { G.turn=0; G.log=[]; G.over=false; G.ver=0; return; }
   applyState(sts[sts.length-1].data);
+  G.ver = sts.length;
 }
 
 async function syncGame() {
@@ -511,9 +518,9 @@ async function syncGame() {
   const mr  = await req('GET', '/games/' + G.gameId + '/moves');
   const sts = mr.moves.filter(m => m.data && m.data.type === 'state');
   if (!sts.length) return;
-  const last = sts[sts.length-1].data;
-  if (last.version === G.ver) return; // niente di nuovo
-  applyState(last);
+  if (sts.length === G.ver) return; // niente di nuovo
+  G.ver = sts.length;
+  applyState(sts[sts.length-1].data);
   render();
   if (G.over) { clearInterval(pollTimer); showWinner(); }
 }
@@ -522,11 +529,11 @@ function applyState(s) {
   G.turn   = s.currentPlayerIndex || 0;
   G.over   = !!s.gameOver;
   G.winner = s.winner || null;
-  G.ver    = s.version || 0;
   G.log    = s.log ? s.log.map(l => l.text) : G.log;
   G.players.forEach(p => {
     if (s.positions    && s.positions[p.id]    !== undefined) p.pos  = s.positions[p.id];
     if (s.skippedTurns && s.skippedTurns[p.id] !== undefined) p.skip = s.skippedTurns[p.id];
+    if (s.wellState    && s.wellState[p.id]    !== undefined) p.well = !!s.wellState[p.id];
   });
 }
 
@@ -773,21 +780,20 @@ function nextTurn() {
 function addLog(t) { G.log.push(t); }
 
 async function saveMove(roll, action) {
-  const pos={}, skp={};
-  G.players.forEach(p=>{pos[p.id]=p.pos; skp[p.id]=p.skip;});
+  const pos={}, skp={}, wll={};
+  G.players.forEach(p=>{pos[p.id]=p.pos; skp[p.id]=p.skip; wll[p.id]=!!p.well;});
   try {
     await req('POST','/games/'+G.gameId+'/moves',{
       playerId: G.players[G.turn].id,
       data:{
-        type:'state', positions:pos, skippedTurns:skp,
+        type:'state', positions:pos, skippedTurns:skp, wellState:wll,
         currentPlayerIndex: G.over ? G.turn : (G.turn+1) % G.players.length,
         lastRoll:roll, lastAction:action,
         gameOver:G.over, winner:G.winner,
         log:G.log.slice(-30).map(t=>({text:t})),
-        version:G.log.length,
       }
     });
-    G.ver=G.log.length;
+    G.ver++; // Incrementa il contatore locale di stati salvati
   } catch(e){ console.warn('save failed',e.message); }
 }
 
@@ -798,6 +804,12 @@ function showWinner() {
   document.getElementById('wtext').textContent='\u{1F3C6} '+G.winner+' ha vinto!';
   document.getElementById('wsub').textContent='Complimenti! La partita \u00e8 terminata.';
   document.getElementById('winner-ov').classList.add('on');
+  // Cancella la partita dal server dopo 5 secondi
+  setTimeout(async () => {
+    try {
+      await req('DELETE', '/games/' + G.gameId);
+    } catch(e) { console.warn('delete game failed', e.message); }
+  }, 5000);
 }
 
 // ══════════════════════════════════════
