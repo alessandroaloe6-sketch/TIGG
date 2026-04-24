@@ -29,25 +29,44 @@ Vince il primo giocatore che raggiunge esattamente l'ultima casella.
 ### Requisiti
 - [Node.js](https://nodejs.org/) versione 16 o superiore
 
-### Installazione
+### Installazione e avvio locale
 
 ```bash
 git clone https://github.com/alessandroaloe6-sketch/TIGG.git
 cd TIGG/GameApi-main
 npm install
-```
-
-### Avvio
-
-```bash
 npm start
 ```
 
 Il server parte su **http://localhost:3000** — apri il browser e sei pronto a giocare.
 
-### Multiplayer online
+### Avvio su GitHub Codespaces
 
-Per giocare con amici online puoi usare [VS Code Dev Tunnels](https://code.visualstudio.com/docs/remote/tunnels) o [ngrok](https://ngrok.com/) per esporre il server temporaneamente:
+Se usi [GitHub Codespaces](https://github.com/features/codespaces), il repo si apre già nell'ambiente giusto. Esegui:
+
+```bash
+cd GameApi-main
+npm install
+npm start
+```
+
+Codespaces aprirà automaticamente una porta pubblica — condividi quel link con i tuoi amici per giocare online.
+
+### Aggiornare il codice (dopo modifiche)
+
+```bash
+# Su Windows (PowerShell), dalla cartella TIGG:
+git add -A
+git commit -m "descrizione modifica"
+git push
+
+# Nel Codespace, per ricevere le modifiche:
+git pull
+```
+
+### Multiplayer online (locale)
+
+Per giocare online dal tuo PC puoi usare [VS Code Dev Tunnels](https://code.visualstudio.com/docs/remote/tunnels) o [ngrok](https://ngrok.com/):
 
 ```bash
 # Con ngrok
