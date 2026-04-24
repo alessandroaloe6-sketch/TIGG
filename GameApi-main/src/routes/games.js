@@ -56,17 +56,21 @@ const router = express.Router();
  */
 router.post('/', (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, maxPlayers, isPrivate, password } = req.body;
 
     if (!name || typeof name !== 'string' || name.trim().length === 0) {
       return res.status(400).json({ error: 'Invalid game name' });
     }
+    if (isPrivate && !password) {
+      return res.status(400).json({ error: 'Password required for private games' });
+    }
 
-    const game = createGame(req.user.id, name.trim());
-    res.status(201).json({
-      message: 'Game created successfully',
-      game
+    const game = createGame(req.user.id, name.trim(), {
+      maxPlayers: Math.min(Math.max(parseInt(maxPlayers) || 4, 2), 6),
+      isPrivate:  !!isPrivate,
+      password:   isPrivate ? password : null,
     });
+    res.status(201).json({ message: 'Game created successfully', game });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

@@ -6,6 +6,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './swagger.js';
 import authRoutes from './routes/auth.js';
 import gameRoutes from './routes/games.js';
+import lobbyRoutes from './routes/lobby.js';
 import { apiKeyAuth } from './middleware/auth.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -30,6 +31,7 @@ app.use('/gioco-oca', express.static(join(__dirname, '../static/gioco-oca.html')
 
 // Public routes (no authentication required)
 app.use('/auth', authRoutes);
+app.use('/lobby', lobbyRoutes);
 
 // Swagger API documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));

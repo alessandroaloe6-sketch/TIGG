@@ -79,16 +79,19 @@ export const getUserById = (userId) => {
 };
 
 // Game operations
-export const createGame = (userId, gameName) => {
+export const createGame = (userId, gameName, options = {}) => {
   const games = readGames();
-  
+
   const newGame = {
     id: uuidv4(),
     name: gameName,
     ownerId: userId,
     players: [],
     moves: [],
-    status: 'active',
+    status: 'waiting',          // 'waiting' finché non avviata, poi 'active'
+    maxPlayers: options.maxPlayers || 4,
+    isPrivate: !!options.isPrivate,
+    password: options.password || null,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   };
@@ -96,6 +99,25 @@ export const createGame = (userId, gameName) => {
   games.push(newGame);
   writeGames(games);
   return newGame;
+};
+
+export const getAllWaitingGames = () => {
+  const games = readGames();
+  const users = readUsers();
+  return games
+    .filter(g => g.status === 'waiting')
+    .map(g => {
+      const owner = users.find(u => u.id === g.ownerId);
+      return {
+        id:          g.id,
+        name:        g.name,
+        playerCount: g.players.length,
+        maxPlayers:  g.maxPlayers || 4,
+        isPrivate:   !!g.isPrivate,
+        apiKey:      owner ? owner.apiKey : null,
+        createdAt:   g.createdAt,
+      };
+    });
 };
 
 export const getGamesByUserId = (userId) => {
