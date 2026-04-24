@@ -26,7 +26,8 @@ app.use((req, res, next) => {
 // Static files
 app.use('/frontend',express.static(join(__dirname, '../static')));
 app.use('/favicon.ico', express.static(join(__dirname, '../static/favicon.ico')));
-app.use('/gioco-oca', express.static(join(__dirname, '../static/gioco-oca.html')));
+app.use('/', express.static(join(__dirname, '../static/index.html')));
+app.use('/gioco-oca', express.static(join(__dirname, '../static/index.html'))); // retrocompatibilità
 
 
 // Public routes (no authentication required)
