@@ -40,7 +40,7 @@ select option { background:#150900; }
 /* ═══ LOBBY / WAIT ═══ */
 .lobby-url { background:rgba(0,0,0,0.3); border:1px solid rgba(245,175,25,0.3); border-radius:8px; padding:10px 14px; font-size:0.79rem; color:#f5af19; word-break:break-all; margin-bottom:12px; cursor:pointer; }
 .player-list { display:flex; flex-direction:column; gap:7px; margin:12px 0; }
-.player-item { display:flex; align-items:center; gap:10px; padding:10px 13px; border-radius:9px; background:rgba(255,160,20,0.06); border:1px solid rgba(245,175,25,0.14); }
+.player-item { display:flex; align-items:center; gap:10px; padding:10px 13px; border-radius:9px; background:rgba(255,160,20,0.06); border:1px solid rgba(245,175,25,0.14); user-select:none; cursor:default; }
 .pdot { width:16px; height:16px; border-radius:50%; border:2px solid rgba(255,255,255,0.3); flex-shrink:0; }
 .pinfo { flex:1; }
 .pname { font-weight:600; font-size:0.88rem; }
@@ -103,14 +103,49 @@ select option { background:#150900; }
 
 /* ═══ LAYOUT (legend | board | sidebar) ═══ */
 .layout { display:grid; grid-template-columns:148px 1fr 245px; gap:8px; flex:1; min-height:0; overflow:hidden; }
-@media(max-width:1000px) { .layout { grid-template-columns:1fr 245px; } .legend-panel { display:none; } }
+@media(max-width:1000px) { .layout { grid-template-columns:1fr 245px; } .legend-panel { order:10; grid-column:1 / -1; max-width:100%; overflow:hidden; } }
 @media(max-width:720px)  { .layout { grid-template-columns:1fr; } }
 
 /* ═══ LEGEND ═══ */
 .legend-panel { background:rgba(255,160,20,0.04); border:1px solid rgba(245,175,25,0.13); border-radius:12px; padding:11px 9px; display:flex; flex-direction:column; gap:5px; overflow-y:auto; }
 .legend-panel::-webkit-scrollbar { width:3px; }
 .legend-panel::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.15); border-radius:2px; }
-.legend-title { font-size:0.71rem; color:#f5af19; font-weight:700; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.04em; flex-shrink:0; }
+.legend-title { font-size:0.71rem; color:#f5af19; font-weight:700; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.04em; flex-shrink:0; display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; }
+.legend-toggle-btn { background:none; border:none; color:#f5af19; font-size:0.75rem; cursor:pointer; padding:0 2px; line-height:1; transition:transform 0.2s; }
+.legend-panel.collapsed .legend-toggle-btn { transform:rotate(180deg); }
+.legend-panel.collapsed { align-self:start; }
+.legend-items { display:flex; flex-direction:column; gap:5px; max-height:700px; opacity:1; overflow:hidden; transform:translateX(0); transition:max-height 0.4s ease, opacity 0.28s ease, transform 0.35s ease; }
+.legend-panel.collapsed .legend-items { max-height:0; opacity:0; transform:translateX(-14px); pointer-events:none; }
+/* Su tablet (721-1000px): solo dissolvenza verticale, nessun traslate */
+@media(max-width:1000px) {
+  .legend-items { transform:none !important; transition:max-height 0.4s ease, opacity 0.28s ease; }
+  .legend-panel.collapsed .legend-items { transform:none !important; }
+}
+/* Mobile (≤720px): legenda overlay flottante in basso */
+@media(max-width:720px) {
+  .legend-panel {
+    position: fixed !important;
+    bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    background: rgba(14, 5, 0, 0.68) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px 16px 0 0 !important;
+    border: 1px solid rgba(245,175,25,0.25) !important;
+    border-bottom: none !important;
+    padding: 10px 16px 14px !important;
+    align-self: unset !important;
+    order: unset; grid-column: unset;
+    max-width: 100%; overflow: hidden;
+  }
+  .legend-panel.collapsed { align-self: unset !important; }
+  .legend-panel:not(.collapsed) { overflow-y: auto; max-height: 60vh; }
+  .legend-panel:not(.collapsed) .legend-items { max-height: none !important; }
+  /* Item legenda più trasparenti su mobile */
+  .legend-item { background: rgba(0,0,0,0.25) !important; border-color: rgba(245,175,25,0.12) !important; }
+  /* Spazio in basso per non coprire contenuto con la barra della legenda */
+  #game-screen { padding-bottom: 52px !important; }
+}
 .legend-item { display:flex; align-items:flex-start; gap:7px; padding:6px 7px; border-radius:8px; border:1px solid rgba(245,175,25,0.1); }
 .legend-item .li-icon { font-size:1.1rem; flex-shrink:0; line-height:1; margin-top:1px; }
 .legend-item b { display:block; font-size:0.7rem; margin-bottom:2px; color:#f0d090; }
@@ -331,7 +366,7 @@ select option { background:#150900; }
 
   /* Layout: colonna singola */
   .layout { grid-template-columns:1fr !important; flex:none !important; overflow:visible !important; gap:6px; }
-  .legend-panel { display:none !important; }
+  /* Legenda: gestita dal blocco 720px (overlay fisso) */
 
   /* Board: larghezza piena, altezza automatica */
   .board-wrap { height:auto; padding:5px; border-radius:10px; }
@@ -371,7 +406,7 @@ select option { background:#150900; }
   .dice-cube-red .face-top    { transform:rotateX(-90deg)  translateZ(19px) !important; }
   .dice-cube-red .face-bottom { transform:rotateX(90deg)   translateZ(19px) !important; }
   .btn-roll { padding:10px 16px; font-size:0.88rem; flex-shrink:0; }
-  #autoroll-countdown { display:none !important; }
+  #autoroll-countdown { display:block !important; font-size:0.62rem; margin:2px 0 0; min-height:14px; }
 
   /* Giocatori: riga orizzontale scorrevole */
   .scores { flex-direction:row !important; overflow-x:auto; gap:6px; padding-bottom:4px; }
@@ -380,15 +415,15 @@ select option { background:#150900; }
   .sr { flex-direction:column; align-items:center; flex-shrink:0; min-width:68px; padding:7px 6px; text-align:center; border-left:none !important; border-bottom:3px solid transparent; }
   .sr.me { border-bottom-color:#f5af19; border-left:none !important; }
   .sdot { width:28px; height:28px; margin-bottom:3px; }
-  .sname { font-size:0.72rem; white-space:nowrap; overflow:hidden; max-width:64px; text-overflow:ellipsis; }
-  .spos { font-size:0.62rem; }
+  .sname { font-size:0.78rem; white-space:nowrap; overflow:hidden; max-width:82px; text-overflow:ellipsis; font-weight:600; }
+  .spos { font-size:0.64rem; }
   .spos-wrap { align-items:center; }
   .spbar-bg { width:44px; }
 
-  /* Log: compatto */
+  /* Log: più alto su mobile */
   .sidebar .panel-log { flex:none !important; }
-  .log-box { max-height:90px; min-height:unset; flex:none !important; }
-  .log-e { font-size:0.65rem; }
+  .log-box { max-height:180px; min-height:80px; flex:none !important; }
+  .log-e { font-size:0.67rem; }
 
   /* Chat: compatta */
   .chat-msgs { height:60px; }
@@ -731,31 +766,36 @@ function switchHomeTab(t){
 
   <div class="layout">
     <!-- LEGENDA -->
-    <div class="legend-panel">
-      <div class="legend-title">📖 Legenda</div>
-      <div class="legend-item li-goose">
-        <div class="li-icon">🦆</div>
-        <div><b>Oca</b><span>Avanzi ancora dello stesso numero appena tirato. Vale anche su più Oche di fila!</span></div>
+    <div class="legend-panel collapsed" id="legend-panel">
+      <div class="legend-title" onclick="toggleLegend()">
+        <span>📖 Legenda</span>
+        <button class="legend-toggle-btn" title="Comprimi/Espandi">▲</button>
       </div>
-      <div class="legend-item li-bridge">
-        <div class="li-icon">🌉</div>
-        <div><b>Ponte</b><span>Vieni spostato avanti a una casella precisa, indipendentemente dal dado.</span></div>
-      </div>
-      <div class="legend-item li-curse">
-        <div class="li-icon">💜</div>
-        <div><b>Maledizione</b><span>Per 5 turni un dado rosso toglie 1–3 al tuo tiro.</span></div>
-      </div>
-      <div class="legend-item li-maze">
-        <div class="li-icon">🌀</div>
-        <div><b>Labirinto</b><span>Torni indietro a una casella precedente.</span></div>
-      </div>
-      <div class="legend-item li-prison">
-        <div class="li-icon">🔒</div>
-        <div><b>Prigione</b><span>Stai fermo per 2–4 turni.</span></div>
-      </div>
-      <div class="legend-item li-death">
-        <div class="li-icon">💀</div>
-        <div><b>Morte</b><span>Torni alla casella 0!</span></div>
+      <div class="legend-items" id="legend-items">
+        <div class="legend-item li-goose">
+          <div class="li-icon">🦆</div>
+          <div><b>Oca</b><span>Avanzi ancora dello stesso numero appena tirato. Vale anche su più Oche di fila!</span></div>
+        </div>
+        <div class="legend-item li-bridge">
+          <div class="li-icon">🌉</div>
+          <div><b>Ponte</b><span>Vieni spostato avanti a una casella precisa, indipendentemente dal dado.</span></div>
+        </div>
+        <div class="legend-item li-curse">
+          <div class="li-icon">💜</div>
+          <div><b>Maledizione</b><span>Per 5 turni un dado rosso toglie 1–3 al tuo tiro.</span></div>
+        </div>
+        <div class="legend-item li-maze">
+          <div class="li-icon">🌀</div>
+          <div><b>Labirinto</b><span>Torni indietro a una casella precedente.</span></div>
+        </div>
+        <div class="legend-item li-prison">
+          <div class="li-icon">🔒</div>
+          <div><b>Prigione</b><span>Stai fermo per 2–4 turni.</span></div>
+        </div>
+        <div class="legend-item li-death">
+          <div class="li-icon">💀</div>
+          <div><b>Morte</b><span>Torni alla casella 0!</span></div>
+        </div>
       </div>
     </div>
 
@@ -847,11 +887,21 @@ function switchHomeTab(t){
 
 <script>
 // ══════════════════════════════════════════════════════════
-// CONFIG
-// ══════════════════════════════════════════════════════════
+// ╔══════════════════════════════════════════════════════════╗
+// ║  CONFIGURAZIONE ESAME — modifica solo questi due valori  ║
+// ╚══════════════════════════════════════════════════════════╝
+//
+// 1) URL del backend (Codespace del professore per l'esame):
+const APIURL = window.location.origin;
+// const APIURL = 'https://NOME-CODESPACE-3000.app.github.dev'; // ← incolla qui l'URL del prof
+//
+// 2) API Key (deve corrispondere a quella in users.json del backend):
+const FIXED_API_KEY = '2a94288f-25d3-491e-961e-02faf6760544c46b0ce4b41a4a0dbe59f41abb363b57';
+//
+// ════════════════════════════════════════════════════════════
+
 const CELLS  = 90;
 const COLS   = 10;
-const APIURL = window.location.origin;
 const TOKEN_IMGS = ['/frontend/assets/pawn1.png','/frontend/assets/pawn2.png','/frontend/assets/pawn3.png','/frontend/assets/pawn4.png'];
 
 // ══════════════════════════════════════════════════════════
@@ -996,16 +1046,10 @@ async function req(method, path, body, _retry=0) {
 }
 
 async function register() {
-  const saved = localStorage.getItem('oca_apikey');
-  if (saved) return saved;
-  const r = await fetch(APIURL + '/auth/register', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({username:'oca_'+Math.random().toString(36).slice(2,10)}),
-  });
-  const d = await r.json();
-  if (!r.ok) throw new Error(d.error || 'Registrazione fallita');
-  localStorage.setItem('oca_apikey', d.user.apiKey);
-  return d.user.apiKey;
+  // Usa sempre la chiave fissa configurata in cima al file (FIXED_API_KEY).
+  // Per cambiare chiave o server all'esame, modifica solo il blocco CONFIGURAZIONE ESAME.
+  localStorage.setItem('oca_apikey', FIXED_API_KEY); // aggiorna anche il localStorage per coerenza
+  return FIXED_API_KEY;
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1346,24 +1390,38 @@ async function startGame() {
     const initRolls = {};
     G.players.forEach(p => { initRolls[p.id] = Math.floor(Math.random()*6)+1; });
 
-    // Gestione pareggi: ri-tira finché c'è un vincitore unico
+    // Gestione pareggi: ri-tira TUTTI i pareggiati (non solo il primo posto)
+    // finché ogni giocatore ha un numero unico.
     const tieRounds = [];
-    let _maxR  = Math.max(...Object.values(initRolls));
-    let _tiedIds = G.players.filter(p => initRolls[p.id] === _maxR).map(p => p.id);
-    while (_tiedIds.length > 1) {
+    let currentRolls = { ...initRolls };
+
+    function findAllTied(rolls) {
+      const groups = {};
+      Object.entries(rolls).forEach(([id, val]) => {
+        groups[val] = groups[val] || [];
+        groups[val].push(id);
+      });
+      return Object.values(groups).filter(ids => ids.length > 1).flat();
+    }
+
+    let _tiedIds = findAllTied(currentRolls);
+    while (_tiedIds.length > 0) {
       const round = {};
       _tiedIds.forEach(id => { round[id] = Math.floor(Math.random()*6)+1; });
       tieRounds.push(round);
-      _maxR    = Math.max(..._tiedIds.map(id => round[id]));
-      _tiedIds = _tiedIds.filter(id => round[id] === _maxR);
+      _tiedIds.forEach(id => { currentRolls[id] = round[id]; });
+      _tiedIds = findAllTied(currentRolls);
     }
-    const winnerId = _tiedIds[0];
+    const winnerId = G.players.reduce((best, p) =>
+      (currentRolls[p.id]||0) > (currentRolls[best]||0) ? p.id : best,
+      G.players[0].id
+    );
 
-    // Vincitore primo, poi tutti per dado decrescente
+    // Ordina per dado finale decrescente (il vincitore è sempre primo)
     G.players = [...G.players].sort((a, b) => {
       if (a.id === winnerId) return -1;
       if (b.id === winnerId) return 1;
-      return (initRolls[b.id]||0) - (initRolls[a.id]||0);
+      return (currentRolls[b.id]||0) - (currentRolls[a.id]||0);
     });
 
     // Posta move start con config
@@ -1439,16 +1497,22 @@ async function showInitRollAnimation(rollData) {
 
   await wait(1100); // attendi fine primo spin
 
-  // Mostra dadi primo turno
+  // Mostra dadi primo turno — evidenzia TUTTI i pareggiati (non solo il massimo)
   const maxFirst = Math.max(...G.players.map(p=>rolls[p.id]||0));
   const hasTie   = tieRounds.length > 0;
+  // Trova tutti i valori duplicati nel lancio iniziale
+  const rollCounts = {};
+  G.players.forEach(p => { const v=rolls[p.id]||1; rollCounts[v]=(rollCounts[v]||0)+1; });
   G.players.forEach(p => {
     const el = document.getElementById('ird-'+p.id);
     if (!el) return;
     el.classList.remove('ir-winner','ir-tied');
     setDiceVal(el, rolls[p.id] || 1);
-    if ((rolls[p.id]||0) === maxFirst) {
-      el.classList.add(hasTie ? 'ir-tied' : 'ir-winner');
+    const v = rolls[p.id]||1;
+    if (rollCounts[v] > 1) {
+      el.classList.add('ir-tied'); // pareggiato a qualsiasi valore
+    } else if (v === maxFirst && !hasTie) {
+      el.classList.add('ir-winner');
     }
   });
 
@@ -1473,14 +1537,18 @@ async function showInitRollAnimation(rollData) {
     });
 
     await wait(1100); // attendi spin casuale
-    const maxInRound = Math.max(...tiedInRound.map(p => round[p.id]||0));
-    const stillTied  = ri < tieRounds.length - 1;
+    const stillTied = ri < tieRounds.length - 1;
+    // Evidenzia pareggi residui in questo round
+    const roundCounts = {};
+    tiedInRound.forEach(p => { const v=round[p.id]||1; roundCounts[v]=(roundCounts[v]||0)+1; });
     tiedInRound.forEach(p => {
       const el = document.getElementById('ird-'+p.id);
       if (!el) return;
       setDiceVal(el, round[p.id] || 1);
-      if ((round[p.id]||0) === maxInRound) {
-        el.classList.add(stillTied ? 'ir-tied' : 'ir-winner');
+      if (roundCounts[round[p.id]||1] > 1 || stillTied) {
+        el.classList.add('ir-tied');
+      } else {
+        el.classList.add('ir-winner');
       }
     });
     await wait(1100); // attendi spin risultato spareggio
@@ -2134,6 +2202,8 @@ function checkBotTurn() {
   const delay = isDisconnected ? 15000 : 2200;
   const capturedVer = G.ver;
   setTimeout(()=>{
+    // Se nel frattempo è stato schedulato un timer più recente (ver diversa), non interferire
+    if (_pendingBotTurnVer !== capturedVer) return;
     _pendingBotTurnVer = -1;
     if (!G.over && G.players[G.turn]?.id === p.id) {
       // Se G.ver è cambiato, il giocatore si è riconnesso e ha tirato da solo → non fare nulla
@@ -2611,6 +2681,10 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
   const el=document.getElementById(id); if(el) el.classList.add('on');
   document.getElementById('game-screen').style.display='none';
+}
+function toggleLegend() {
+  const panel = document.getElementById('legend-panel');
+  if (panel) panel.classList.toggle('collapsed');
 }
 function setSt(screen, msg, type) {
   const el=document.getElementById('st-'+screen); if(!el) return;
