@@ -891,9 +891,8 @@ function switchHomeTab(t){
 // ║  CONFIGURAZIONE ESAME — modifica solo questi due valori  ║
 // ╚══════════════════════════════════════════════════════════╝
 //
-// 1) URL del backend (Codespace del professore per l'esame):
-const APIURL = window.location.origin;
-// const APIURL = 'https://NOME-CODESPACE-3000.app.github.dev'; // ← incolla qui l'URL del prof
+// 1) URL del backend — punta automaticamente al server che serve la pagina:
+const APIURL = "";
 //
 // 2) API Key (deve corrispondere a quella in users.json del backend):
 const FIXED_API_KEY = '2a94288f-25d3-491e-961e-02faf6760544c46b0ce4b41a4a0dbe59f41abb363b57';
@@ -2678,60 +2677,4 @@ function timeAgo(iso) {
   return Math.floor(h/24)+' giorni fa';
 }
 function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
-  const el=document.getElementById(id); if(el) el.classList.add('on');
-  document.getElementById('game-screen').style.display='none';
-}
-function toggleLegend() {
-  const panel = document.getElementById('legend-panel');
-  if (panel) panel.classList.toggle('collapsed');
-}
-function setSt(screen, msg, type) {
-  const el=document.getElementById('st-'+screen); if(!el) return;
-  el.textContent=msg; el.className='st'+(type==='ok'?' ok':type==='err'?' err':'');
-}
-function toast(msg, err) {
-  const el=document.getElementById('toast');
-  el.textContent=msg; el.className='toast on'+(err?' err':'');
-  setTimeout(()=>el.className='toast',3500);
-}
-function copyLink()  { navigator.clipboard.writeText(buildShareUrl()).then(()=>toast('Link copiato! 🎉')); }
-function copyId()    { navigator.clipboard.writeText(G.gameId).then(()=>toast('Game ID copiato: '+G.gameId)); }
-function buildShareUrl() {
-  return window.location.origin+window.location.pathname+'#k='+encodeURIComponent(G.apiKey)+'&g='+encodeURIComponent(G.gameId);
-}
-function updateHash()  { history.replaceState(null,'',buildShareUrl()); }
-function hashParams()  {
-  const o={};
-  window.location.hash.replace('#','').split('&').forEach(p=>{const[k,v]=p.split('=');if(k&&v)o[k]=decodeURIComponent(v);});
-  return o;
-}
-function saveLocal() {
-  try { localStorage.setItem('oca_key_'+G.gameId, G.apiKey); localStorage.setItem('oca_me_'+G.gameId, G.myId); } catch(_){}
-}
-
-// ══════════════════════════════════════════════════════════
-// AUTO-FILL DA HASH
-// ══════════════════════════════════════════════════════════
-window.addEventListener('DOMContentLoaded', () => {
-  initCubes(); // popola i pallini sulle 6 facce di tutti i cubi nel DOM
-  const h = hashParams();
-  if (h.k && h.g) {
-    switchHomeTab('join');
-    document.getElementById('j-id').value = h.g;
-    document.getElementById('j-name').focus();
-    setSt('join','Sei stato invitato! Inserisci il tuo nome e clicca "Unisciti".','ok');
-  }
-  checkSavedSession(); // mostra banner "Riprendi partita" se c'è una sessione salvata
-
-  // Quando la scheda torna visibile (es. da background su mobile), risincronizza
-  // lo stato di gioco per recuperare le mosse perse durante la sospensione
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible' && G.gameId && !G.over) {
-      forceResync();
-    }
-  });
-});
-</script>
-</body>
-</html>
+  document.querySelecto
